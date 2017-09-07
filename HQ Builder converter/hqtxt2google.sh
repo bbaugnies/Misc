@@ -130,7 +130,7 @@ $units | foreach {
 
 
 
-python3 $home/python_scripts/Google_sheets/quickstart.py $out_file
+python3 quickstart.py $out_file
 
 
 
