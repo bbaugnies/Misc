@@ -1,8 +1,12 @@
  param (
     [Parameter(Mandatory=$true)][string]$in_file
  )
+$in_file += "/txt"
+$t = curl $in_file | out-string
+$m = $m = $t -match '(?smi)textarea id.*>(?<text>.*)<\/textarea'
+$m = $matches['text'] -split '\n'
 
-$content = Get-content $in_file | where {$_ -match '^[^@\s]'} | foreach {$_.trim()}
+$content = $m | where {$_ -match '^[^@\s]'} | foreach {$_.trim()}
 $t = $content[0] -match '\((?<total>\d+\/\d+)pt\.\)'
 $total = $matches['total']
 $content = $content[2..($content.length - 1)]
@@ -77,25 +81,25 @@ for ($i = 0; $i -lt $content.length; $i ++) {
      }
      
      # issue if an option has more than 1 occurence
-     elseif ($content[$i] -match '^>' -and $regUnit) {
+     elseif ($content[$i] -match '^&' -and $regUnit) {
         $l = $content[$i] -split ';' | foreach {$_.trim()}
-        if ($l[0] -match '> 1x \- (?<opt>.*) \((?<opt_cost>\d+)pt\.\)') {
+        if ($l[1] -match '1x \- (?<opt>.*) \((?<opt_cost>\d+)pt\.\)') {
             $t = $matches['opt'], 1, $matches['opt_cost']
             $curUnit.Opt += , $t
         }
         else {
-            $t = $l[0] -match '\((?<unitCost>\d+)pt.\)'
+            $t = $l[1] -match '\((?<unitCost>\d+)pt.\)'
             $curUnit | add-member -type NoteProperty -name unitCost -value $matches['unitCost']
         }
         if ($baseOptions.count -eq 0) {
-            foreach($o in $l[1..($l.length-1)]) {
+            foreach($o in $l[2..($l.length-1)]) {
                 if ($_ -ne "") {
                     $baseOptions += $o
                 }
             }
         }
         else {
-            $options = $l[1..($l.length-2)]
+            $options = $l[2..($l.length-2)]
             $intersection = $options | ?{$baseOptions -contains $_}
             $union = ($options + $baseOptions) | select -uniq
             $diff = $union | ?{$intersection -notcontains $_}
@@ -114,7 +118,7 @@ foreach ($u in $units) {
         if ($o[2] -gt 0) { $o[2] -= $u.unitCost}
     }
 }
-$out_file = $in_file+".csv"
+$out_file = $in_file[-10..-5]+".csv" -join ""
 
 
 
