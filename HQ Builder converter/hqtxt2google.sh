@@ -1,6 +1,6 @@
- param (
-    [Parameter(Mandatory=$true)][string]$in_file
- )
+param (
+   [Parameter(Mandatory=$true)][string]$in_file
+)
 $in_file += "/txt"
 $t = curl $in_file | out-string
 $m = $m = $t -match '(?smi)textarea id.*>(?<text>.*)<\/textarea'

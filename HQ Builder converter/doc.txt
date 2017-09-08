@@ -1,0 +1,38 @@
+Lord of Change
+Great Unclean One
+Keeper of Secrets
+Daemon Prince
+Skarbrand
+Kairos Fateweaver
+Ku&#\d+;gath Plaguefather
+Bloodthirster
+Epidemius
+The Masque of Slaanesh
+Herald of Khorne
+Herald of Tzeentch
+Herald of Nurgle
+Herald of Slaanesh
+Skulltaker
+Karanak
+The Blue Scribes
+The Changeling
+\d+x - Bloodletters of Khorne
+\d+x - Pink Horrors of Tzeentch
+\d+x - Plaguebearers of Nurgle
+\d+x - Daemonettes of Slaanesh
+\d+x - Bloodcrushers of Khorne
+\d+x - Flash Hounds of Khorne
+\d+x - Flamers of Tzeentch
+\d+x - Screamers of Tzeentch
+Beasts of Nurgle
+\d+x - Nurglings
+\d+x - Seekers of Slaanesh
+\d+x - Fiends of Slaanesh
+Seeker Chariot of Slaanesh
+\d+x - Chaos Furies
+Skull Cannon of Khorne
+Soul Grinder
+\d+x - Plague Drones of Nurgle
+Burning Chariot of Tzeentch
+Exalted Seeker Chariot of Slaanesh
+Hellflayer of Slaanesh

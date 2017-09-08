@@ -1,0 +1,37 @@
+Karl Franz, The Emperor
+Kurt Helborg, Reiksmarshal of the Empire
+Balthasar Gelt, The Supreme Patriarch
+Volkmar the Grim, The Grand Theogonist
+General of the Empire
+Battle Wizard Lord
+Arch Lector
+Grand Master
+Ludwig Schwarzhelm, The Emperor&#\d+;s Champion
+Luthor Huss, Prophet of Sigmar
+Captain
+Battle Wizard
+Warrior Priest
+Master Engineer
+Witch Hunter
+\d+x - Halberdiers
+\d+x - Spearmen
+\d+x - Swordsmen
+\d+x - Crossbowmen
+\d+x - Handgunners
+\d+x - Free Company Militia
+\d+x - Knightly Orders
+\d+x - Archers
+\d+x - Greatswords
+\d+x - Demigryph Knights
+\d+x - Reiksguard Knights
+\d+x - Huntsmen
+\d+x - Pistoliers
+\d+x - Outriders
+Great Cannon
+Mortar
+\d+x - Flagellants
+Helblaster Volley Gun
+Helstorm Rocket Battery
+Steam Tank
+Celestial Hurricanum
+Luminark of Hysh
