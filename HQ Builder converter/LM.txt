@@ -1,0 +1,30 @@
+Lord Mazdamundi
+Lord Kroak
+Kroq-Gar
+Tehenhauin
+Slann Mage-Priest
+Saurus Oldblood
+Chakax
+Gor-Rok
+Tetto&#\d+;eko
+Tiktaq&#\d+;to
+Oxyotl
+Skink Priest
+Saurus Scar-Veteran
+Skink Chief
+\d+x - Saurus Warriors
+\d+x - Skink Cohort
+\d+x - Skink Skirmishers
+\d+x - Temple Guard
+\d+x - Jungle Swarms
+\d+x - Chameleon Skinks
+\d+x - Cold One Riders
+\d+x - Kroxigor
+\d+x - Terradon Riders
+Stegadon
+Bastiladon
+\d+x - Ripperdactyl Riders
+Ancient Stegadon
+\d+x - Salamander Hunting Pack
+\d+x - Razordon Hunting Pack
+Troglodon

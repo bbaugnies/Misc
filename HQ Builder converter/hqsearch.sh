@@ -6,10 +6,6 @@ param (
 )
 
 $candidates = @()
-$units = "Battle Wizard( Lord)?", "Captain" , "Arch Lector", "Witch Hunter", "Master Engineer",
-        "\d+x \- Halberdiers", "\d+x \- Swordsmen", "\d+x \- Handgunners", "\d+x \- Demigryph Knights",
-        "Great Cannon", "Helblaster Volley Gun", "General of the Empire", "Warrior Priest", 
-        "\d+x \- Archers", "\d+x \- Knightly Orders", "\d+x \- Greatswords", "Steam Tank"
 
 $units = Get-content $unit_file
 $pointStr = ".*\(\d+\/{0}pt\.\)" -f $points
@@ -17,6 +13,7 @@ $test = "hello", "bye"
 
 
 while ($start -lt $stop){
+    if ($start%100 -eq 0) {"done: $start"}
     $url = "https://hq-builder.com/export/{0}/txt" -f $start
     $viewrl = "https://hq-builder.com/shared/{0}" -f $start
     try {

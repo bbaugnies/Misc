@@ -1,0 +1,34 @@
+Tyrion
+Teclis
+Eltharion the Grim
+Alith Anar
+Alarielle the Radiant
+Prince
+Archmage
+Anointed of Asuryan
+Loremaster of Hoeth
+Korhil
+Caradryan
+Noble
+Mage
+Dragon Mage of Caledor
+Lothern Sea Helm
+Handmaiden of the Everqueen
+\d+x - Spearmen
+\d+x - Archers
+\d+x - Lothern Sea Guard
+\d+x - Silver Helms
+\d+x - Ellyrian Reavers
+Lion Chariot of Chrace
+\d+x - White Lions of Chrace
+\d+x - Swordmasters of Hoeth
+\d+x - Shadow Warriors
+\d+x - Phoenix Guard
+\d+x - Dragon Princes of Caledor
+Lothern Skycutter
+Tiranoc Chariot
+Eagle Claw Bolt Thrower
+Great Eagles
+Frostheart Phoenix
+Flamespyre Phoenix
+\d+x - Sisters 

@@ -1,0 +1,31 @@
+Lord Skrolk
+Thanquol &amp; Boneripper
+Ikik Claw
+Throt the Unclean
+Queek Headtaker
+Vermin Lord
+Warlord
+Grey Seer
+Deathmaster Snikch
+Tretch Craventail
+Assassin
+Warlock Engineer
+Chieftain
+Plague Priest
+\d+x - Clanrats
+\d+x - Stormvermin
+\d+x - Skavenslaves
+\d+x - Night Runners
+Giant Rats
+\d+x - Rat Swarm
+\d+x - Plague Monks
+Rat Ogres
+\d+x - Gutter Runners
+Rat Ogres
+\d+x - Plague Censer Bearers
+\d+x - Warplock Jezzails
+\d+x - Poisoned Wind Globadiers
+Hell Pit Abomination
+Doomwheel
+Warp Lightning Cannon
+Plague Claw Catapult

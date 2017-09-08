@@ -1,0 +1,32 @@
+Settra the Imperishable
+# Chariot of the Gods
+Arkhan the Black
+High Queen Khalida
+Grand Hierophant Khater
+Tomb King
+Liche High Priest
+The Herald Nekaph
+Prince Apophas
+Ramhotep the Visionary
+Tomb Prince
+Tomb Herald
+Liche Priest
+Necrotect
+\d+x - Skeleton Warriors
+\d+x - Skeleton Archers
+\d+x - Skeleton Horsemen
+\d+x - Skeleton Horse Archers
+\d+x - Skeleton Chariots
+\d+x - Tomb Guard
+\d+x - Necropolis Knights
+Tomb Scorpion
+\d+x - Ushabti
+\d+x - Tomb Swarm
+\d+x - Carrion
+Khemrian Warspinx
+\d+x - Sepulchral Stalkers
+Necrolith Colossus
+Hierotitan
+Hecrosphinx
+Screaming Skull Catapult
+Casket of Souls
