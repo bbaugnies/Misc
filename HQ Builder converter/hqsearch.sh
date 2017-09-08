@@ -23,7 +23,7 @@ while ($start -lt $stop){
         $t = Invoke-webrequest -Uri $url
     }
     catch{
-        
+        "error on $start"
     }
     
     if ($t.content -match $pointStr){
