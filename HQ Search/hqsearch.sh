@@ -8,7 +8,7 @@ param (
 $candidates = @()
 
 $units = Get-content $unit_file
-$pointStr = ".*\(\d+\/{0}pt\.\)" -f $points
+$pointStr = ".*\([\.\d]+\/{0}pt\.\)" -f $points
 $test = "hello", "bye"
 
 $fails = 0
