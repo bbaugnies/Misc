@@ -9,9 +9,11 @@ from functools import partial
 from re import *
 from copy import *
 from math import *
+from random import randint
 import os
 
 
+num = []
 turnOrder = []
 resultText = ""
 
@@ -45,7 +47,7 @@ baseSizes = (StringVar(frame), StringVar(frame))
 rules=(dict(), dict())
 ruleOptions=["Always Strikes First", "Always Strikes Last", "Armour Piercing", "BSB",
     "Devastating Charge", "Has Champion", "Has Charged", "Ignore Save",  
-    "Monstrous Support", "Mounted", "Stomp", "Stubborn", "Thunderstomp"]
+    "Monstrous Support", "Mounted", "Stomp", "Stubborn", "Thunderstomp", "Unbreakable"]
 ruleOptions=sorted(ruleOptions)
 valueRules=["Auto-wound", "Bonus To-Hit", "Bonus To-Wound", "Extra Attack", "Fight in Extra Ranks", "Killing Blow",
     "To-Hit Penalty", "To-Wound Penalty"]
@@ -57,7 +59,7 @@ rerolls=sorted(rerolls)
 rerollOptions=["1s", "6s", "Failures", "Successes"]
 armyRules=["Cold-blooded", "Predation", "Strength in Numbers"]
 armyRules=sorted(armyRules)
-combatStatList=["To-hit", "To-wound", "Enemy Save", "Enemy Ward", "Priority"]
+combatStatList=["To-Hit", "To-Wound", "Save", "Ward", "Priority"]
 resBox = StringVar(frame, "result")
     
     
@@ -253,27 +255,27 @@ def getStats(turn):
                 strength[i]+=2
         
         if ws[i]>ws[not i]:
-            s[i]["To-hit"]=3
-        elif ws[i]*2<ws[not i]: s[i]["To-hit"]=5
-        else:   s[i]["To-hit"]=4
-        if thb[i][0].get(): s[i]["To-hit"]-= thb[i][1].get()
-        if thp[not i][0].get(): s[i]["To-hit"]+= thp[not i][1].get()
+            s[i]["To-Hit"]=3
+        elif ws[i]*2<ws[not i]: s[i]["To-Hit"]=5
+        else:   s[i]["To-Hit"]=4
+        if thb[i][0].get(): s[i]["To-Hit"]-= thb[i][1].get()
+        if thp[not i][0].get(): s[i]["To-Hit"]+= thp[not i][1].get()
         
-        s[i]["To-wound"] = 4+toughness[not i]-strength[i]
-        if twb[i][0].get(): s[i]["To-wound"]-= twb[i][1].get()
-        if twp[not i][0].get(): s[i]["To-wound"]+= twp[not i][1].get()
-        s[i]["To-wound"] = min(6, s[i]["To-wound"])
-        s[i]["To-wound"] = max(2, s[i]["To-wound"])
+        s[i]["To-Wound"] = 4+toughness[not i]-strength[i]
+        if twb[i][0].get(): s[i]["To-Wound"]-= twb[i][1].get()
+        if twp[not i][0].get(): s[i]["To-Wound"]+= twp[not i][1].get()
+        s[i]["To-Wound"] = min(6, s[i]["To-Wound"])
+        s[i]["To-Wound"] = max(2, s[i]["To-Wound"])
         
-        if rules[i]["Ignore Save"].get(): s[i]["Enemy Save"] = 7
+        if rules[i]["Ignore Save"].get(): s[i]["Save"] = 7
         else:
-            s[i]["Enemy Save"] = armor[not i]
-            if rules[i]["Armour Piercing"].get():    s[i]["Enemy Save"] += 1
-            if strength[i]>3 :  s[i]["Enemy Save"] += strength[i]-3
-        s[i]["Enemy Save"]= min(7, s[i]["Enemy Save"])
-        s[i]["Enemy Save"] = max(2, s[i]["Enemy Save"])
+            s[i]["Save"] = armor[not i]
+            if rules[i]["Armour Piercing"].get():    s[i]["Save"] += 1
+            if strength[i]>3 :  s[i]["Save"] += strength[i]-3
+        s[i]["Save"]= min(7, s[i]["Save"])
+        s[i]["Save"] = max(2, s[i]["Save"])
         
-        s[i]["Enemy Ward"] = ward[not i]
+        s[i]["Ward"] = ward[not i]
         
         s[i]["Priority"] = rules[i]["Always Strikes First"].get() - rules[i]["Always Strikes Last"].get()
     
@@ -317,25 +319,25 @@ def getMountStats(turn):
         
         
         if mws[i]>ws[not i]:
-            s[i]["To-hit"]=3
-        elif mws[i]*2<ws[not i]: s[i]["To-hit"]=5
-        else:   s[i]["To-hit"]=4
-        if thp[not i][0].get(): s[i]["To-hit"]+= thp[not i][1].get()
+            s[i]["To-Hit"]=3
+        elif mws[i]*2<ws[not i]: s[i]["To-Hit"]=5
+        else:   s[i]["To-Hit"]=4
+        if thp[not i][0].get(): s[i]["To-Hit"]+= thp[not i][1].get()
         
-        s[i]["To-wound"] = 4+toughness[not i]-strength[i]
-        if twp[not i][0].get(): s[i]["To-wound"]+= twp[not i][1].get()
-        s[i]["To-wound"] = min(6, s[i]["To-wound"])
-        s[i]["To-wound"] = max(2, s[i]["To-wound"])
+        s[i]["To-Wound"] = 4+toughness[not i]-strength[i]
+        if twp[not i][0].get(): s[i]["To-Wound"]+= twp[not i][1].get()
+        s[i]["To-Wound"] = min(6, s[i]["To-Wound"])
+        s[i]["To-Wound"] = max(2, s[i]["To-Wound"])
         
-        if rules[i]["Ignore Save"].get(): s[i]["Enemy Save"] = 7
+        if rules[i]["Ignore Save"].get(): s[i]["Save"] = 7
         else:
-            s[i]["Enemy Save"] = armor[not i]
-            if rules[i]["Armour Piercing"].get():    s[i]["Enemy Save"] += 1
-            if strength[i]>3 :  s[i]["Enemy Save"] += strength[i]-3
-        s[i]["Enemy Save"]= min(7, s[i]["Enemy Save"])
-        s[i]["Enemy Save"] = max(2, s[i]["Enemy Save"])
+            s[i]["Save"] = armor[not i]
+            if rules[i]["Armour Piercing"].get():    s[i]["Save"] += 1
+            if strength[i]>3 :  s[i]["Save"] += strength[i]-3
+        s[i]["Save"]= min(7, s[i]["Save"])
+        s[i]["Save"] = max(2, s[i]["Save"])
         
-        s[i]["Enemy Ward"] = ward[not i]
+        s[i]["Ward"] = ward[not i]
         
         #pretty sure everything concerning priority here is replace by
         # setTurnOrder
@@ -410,7 +412,7 @@ def setTurnOrder():
 #losses: the amount of models the unit lost before attacking
 #        (only non-0 if the unit attacks second)    
 def getAttacks(unit, losses):
-    if numbers[unit][0].get() == 0 or numbers[unit][1].get() == 0:
+    if num[unit][0] == 0 or num[unit][1] == 0:
         return(0,0)
             
     apm = stats[unit]["A"].get()
@@ -421,104 +423,104 @@ def getAttacks(unit, losses):
         apm += (1+rules[unit]["Random Attacks"][2].get())/2*rules[unit]["Random Attacks"][1].get()
     if rules[unit]["Devastating Charge"].get() and rules[unit]["Has Charged"].get():    apm+=1
         
-    if stats[unit]["W"].get() > 1:
-        available = int(numbers[unit][0].get()) - losses/stats[unit]["W"].get()
-    else: available= int(numbers[unit][0].get()) - losses
+    available= int(num[unit][0]) - losses
+    available = int(ceil(available/stats[unit]["W"].get()))
+    av_enemy = int(ceil(num[not unit][0] / stats[not unit]["W"].get()))
     
     #current fronts of both units
-    r = [min(available, int(numbers[unit][1].get())), min(int(numbers[not unit][0].get()), int(numbers[not unit][1].get()))]
+    r = [min(available, int(num[unit][1])), min(av_enemy, int(num[not unit][1]))]
     width = [int(baseSizes[unit].get()[:-2]), int(baseSizes[not unit].get()[:-2])]
     #front in mm
     r= [r[0]*width[0], r[1]*width[1]]
     availableWidth = min(r)
     #maximum models in attacking unit that are in contact
-    widthConstraint = ceil(availableWidth/width[0]) + (1 if availableWidth%width[0] == 0 else 0)
+    widthConstraint = ceil(availableWidth/width[0]) + (2 if availableWidth%width[0] == 0 else 1)
     
-    firstRank=min(available, int(numbers[unit][1].get()), widthConstraint)
+    firstRank=min(available, int(num[unit][1]), widthConstraint)
     attacks = firstRank*(apm)
-    available-=int(numbers[unit][1].get())
+    available-=int(num[unit][1])
     supportRanks = 1
-    if int(numbers[unit][1].get())>=10 and not rules[unit]["Monstrous Support"].get(): supportRanks+=1
-    if int(numbers[unit][1].get())>=6 and rules[unit]["Monstrous Support"].get(): supportRanks+=1
+    if int(num[unit][1])>=10 and not rules[unit]["Monstrous Support"].get(): supportRanks+=1
+    if int(num[unit][1])>=6 and rules[unit]["Monstrous Support"].get(): supportRanks+=1
     if weapons[unit].get()=="Spear (foot)": supportRanks+=1
     if rules[unit]["Fight in Extra Ranks"][0].get():
         supportRanks += rules[unit]["Fight in Extra Ranks"][1].get()
-    
     while supportRanks > 0 and available > 0:
-        rankAttacks = min(available, int(numbers[unit][1].get()), widthConstraint)
+        rankAttacks = min(available, int(num[unit][1]), widthConstraint)
         if rules[unit]["Monstrous Support"].get():
             attacks += min(rankAttacks * apm, rankAttacks * 3)
         else:
             attacks += rankAttacks
-        available -= int(numbers[unit][1].get())
+        available -= int(num[unit][1])
         supportRanks-=1
     if rules[unit]["Predation"].get():    attacks = attacks * (1+1/6)
     #shortenable?
-    return ((max(0, attacks)+ (1 if attacks >=0 else 0)) if rules[unit]["Has Champion"].get() else max(0, attacks), max(0, firstRank))
+    return (int((max(0, attacks)+ (1 if attacks >=0 else 0)) if rules[unit]["Has Champion"].get() else max(0, attacks)), int(max(0, firstRank)))
    
     
-def calcRerolls(attacker, stat, value, fails, skipVal, isSkip):
+def calcRerolls(attacker, cstats, stat):
+    r = randint(1, 6)
     if rules[attacker][stat][0].get():
         reroll = rules[attacker][stat][1].get()
-        if reroll=="1s":
-            return value/6*(7/6)
-        if reroll=="Failures":
-            return value/6*(1+(6-value)/6)
-        if reroll=="6s":
-            if isSkip:  return max(0, (value-1)/6+value/36)
-            else:       return max(0, (value-(1 if skipVal == 0 else 0))/6+value/36)
-        if reroll=="Successes":
-            return (6-fails)*value/36
-    else: return value/6
-        
+        if reroll=="1s" and r == 1:
+            r=randint(1,6)
+            return r
+        if reroll=="Failures" and r < cstats[attacker][stat]:
+            r=randint(1,6)
+            return r
+        if reroll=="6s" and r == 6:
+            r=randint(1,6)
+            return r
+        if reroll=="Successes" and r >= cstats[attacker][stat]:
+            r=randint(1,6)
+            return r
+    #print "rolled {} to {}".format(r, stat)
+    return r
+    
+def hit(attacker, cstats):
+    r = randint(1, 6)
+    r = calcRerolls(attacker, "To-Hit", r, cstats)   
+    return r     
     
 #Resolves the attacks of one side, calculating the amount of kills
 #attacker: the identifier of the attacking side (0 or 1)
 #attacks: the number of attacks carried out
 #cstats: the ordered combatStats of both units
 def attack(attacker, attacks, cstats, rules):
-    #hitchance
-    hits=7-cstats[attacker]["To-hit"]
-    fails = 6 - hits
+    #print "{} attacks by {}: {}".format(attacks, attacker, cstats)
     wounds = 0
+    auto_w = 7
     if rules[attacker]["Auto-wound"][0].get():
-        wounds = 7-rules[attacker]["Auto-wound"][1].get()
-        hits = max(0, hits-wounds)
-    hitchance = calcRerolls(attacker, "To-Hit", hits, fails, wounds, False)
-    woundchance = calcRerolls(attacker, "To-Hit", wounds, fails, 0, True)
-          
-    #woundchance
-    woundrolls = 7-cstats[attacker]["To-wound"]
-    fails = 6 - woundrolls
-    unsaved = 0
-    unsavedDmg = 0
+        auto_w = rules[attacker]["Auto-wound"][1].get()
+    kb = 7
     if rules[attacker]["Killing Blow"][0].get():
-        unsaved = (7-rules[attacker]["Killing Blow"][1].get())
-        woundrolls = max(0, woundrolls-unsaved)
-        unsavedDmg = stats[not attacker]["W"].get()
-    baseWoundchance = calcRerolls(attacker, "To-Wound", woundrolls, fails, unsaved, False)
-    unsavedchance = calcRerolls(attacker, "To-Wound", unsaved, fails, 0, True)
-    unsavedchance = hitchance*unsavedchance
-    baseWoundchance = hitchance*baseWoundchance
-    woundchance += baseWoundchance
-    unsavedchance = unsavedchance * unsavedDmg
+        kb = rules[attacker]["Killing Blow"][1].get()    
     
-    #unsavedchance
-    armorSuccessRoll = 7 - cstats[attacker]["Enemy Save"]
-    fails = 6 - armorSuccessRoll
-    baseUnsavedchance = calcRerolls(not attacker, "Save", armorSuccessRoll, fails, 0, False)
-    baseUnsavedchance = 1-baseUnsavedchance
-    unsavedchance += baseUnsavedchance*woundchance
-      
-    #unwardedchance  
-    wardSuccessRoll = 7 - cstats[attacker]["Enemy Ward"]
-    fails = 6 - wardSuccessRoll
-    baseUnWardchance = calcRerolls(not attacker, "Ward", wardSuccessRoll, fails, 0, False)
-    baseUnWardchance = 1 - baseUnWardchance
-    wardpass = unsavedchance * baseUnWardchance
-    
-    
-    return wardpass * attacks
+    for i in range(0, attacks):
+        r = calcRerolls(attacker, cstats, "To-Hit")
+        if r < cstats[attacker]["To-Hit"]:
+            continue
+        
+        if r > auto_w:
+            r = 0
+        else:
+            r = calcRerolls(attacker, cstats, "To-Wound")
+            if r < cstats[attacker]["To-Wound"]:
+                continue
+        
+        if r > kb:
+            r = 0
+        else:
+            r = calcRerolls(not attacker, cstats, "Save")
+            if r >= cstats[attacker]["Save"]:
+                continue
+         
+        r = calcRerolls(not attacker, cstats, "Ward")
+        if r < cstats[attacker]["Ward"]:
+            wounds += 1
+        
+
+    return wounds
     
     
 #Calculates the combat resolution
@@ -528,12 +530,11 @@ def combatResolution(kills):
     result = [kills[0], kills[1]]
     rank=[0, 0]
     for i in range(2):
-        left = numbers[i][0].get()
-        if stats[i]["W"].get() > 1: left -= kills[not i]/stats[i]["W"].get()
-        else:   left -= kills[not i]
+        left = num[i][0]
+        left = int(ceil(left/stats[i]["W"].get()))
         if rules[i]["Has Charged"].get(): result[i]+=1
-        if numbers[i][1].get() > 0:
-            rank[i] = left//numbers[i][1].get() - 1 + (left%numbers[i][1].get() >= 5)
+        if num[i][1] > 0:
+            rank[i] = left//num[i][1] - 1 + (left%num[i][1] >= 5)
         result[i] += min(3, rank[i])
     res = result[0] - result[1]
     steadfast = False
@@ -557,23 +558,34 @@ def combatResolution(kills):
     
 def breakTest(cr):
     global resultText
+    
+    if rules[cr[0]]["Unbreakable"].get():
+        resultText += "Break test passed, Unbreakable"
+        return True
+    
     target = stats[cr[0]]["Ld"].get()
     if not cr[2] and not rules[cr[0]]["Stubborn"].get():
         target -= abs(cr[1])
     if rules[cr[0]]["Strength in Numbers"].get():
         target += cr[3]
-    s=0
-    for i in range(1, 7):
-        for j in range(1, 7):
-            for k in range(1, 7):
-                if i+j+k - (max(i,j,k) if rules[cr[0]]["Cold-blooded"].get() else k) <= floor(target):
-                    s+=1/6
-                if i+j+k - (max(i,j,k) if rules[cr[0]]["Cold-blooded"].get() else k) == ceil(target):
-                    s+=1/6 * (target-floor(target))
-    if rules[cr[0]]["BSB"].get():
-        resultText += str(round(-s/36*(s/36-2)*100, 2)) + "% chance of passing the break test\n"
+    dice = [randint(1,6), randint(1,6), randint(1,6)]
+    if rules[cr[0]]["Cold-blooded"].get():
+        total = sum(dice) - min(dice)
     else:
-        resultText += str(round(s/36*100, 2)) + "% chance of passing the break test\n"
+        total = dice[0] + dice[1]
+        
+    if total > target and rules[cr[0]]["BSB"].get():
+        dice = [randint(1,6), randint(1,6), randint(1,6)]
+        if rules[cr[0]]["Cold-blooded"].get():
+            total = sum(dice) - min(dice)
+        else:
+            total = dice[0] + dice[1]
+    if total <= target:
+        resultText += "Break test passed. Rolled {}, needed {}".format(total, target)
+    else:
+        resultText += "Break test failed. Rolled {}, needed {}".format(total, target)
+    return total <= target
+    
         
                 
     
@@ -586,15 +598,15 @@ def breakTest(cr):
 #unit: the id of the unit hitting
 #stats: combat stats of the units
 def stomp(unit, models, stats, rules):
-    temp = (rules[unit]["Auto-wound"][0].get(), stats[unit]["To-hit"])
-    stats[unit]["To-hit"]=1
+    temp = (rules[unit]["Auto-wound"][0].get(), stats[unit]["To-Hit"])
+    stats[unit]["To-Hit"]=1
     rules[unit]["Auto-wound"][0].set(False)
     if rules[unit]["Stomp"].get():
         res = [attack(unit, models, stats, rules), models]
     if rules[unit]["Thunderstomp"].get():
         res = [attack(unit, 3.5*models, stats, rules), models*3.5]
     rules[unit]["Auto-wound"][0].set(temp[0])
-    stats[unit]["To-hit"] = temp[1]
+    stats[unit]["To-Hit"] = temp[1]
     return res
       
         
@@ -611,6 +623,7 @@ for i in valueRules + diceRules + rerolls:
 #mstats: combatStats of both units' mounts
 def fightRound(roundn, stats, mstats):
     global resultText
+    global num
     kills =[0, 0]
     attacks = [0, 0]
     first = turnOrder[0][0][0] # =ID of first unit in first turn
@@ -660,23 +673,59 @@ def fightRound(roundn, stats, mstats):
     resultText += "____________________________________________\n"    
     resultText += names[first].get()+ " does "+ str(round(attacks[first], 2))+ " attacks, for "+ str(round(kills[first], 2)) + " wounds\n"
     resultText += names[not first].get()+ " does "+ str(round(attacks[not first],2))+ " attacks, for "+ str(round(kills[not first],2)) + " wounds\n"
-        
-    cr = combatResolution(kills)
-    if cr != 0: breakTest(cr)
-   
     
-        
+    for i in range(0, 2):
+        cur = num[i][0]
+        cur = cur - kills[not i]
+        num[i][0]= cur
+    resultText += str(num) + "\n"
+    cr = combatResolution(kills)
+    if cr != 0: return (breakTest(cr), cr[0])
+    else: return (True, "tie")
+    
+    
+class wincounter:
+    wins = 0
+    rounds = 0
+    u_left = 0
+    e_left = 0
+    
+    def __str__(self):
+        return "wins: {}\naverage rounds: {}\naverage left:{}\naverage enemy left: {}".format(self.wins, 0 if self.wins == 0 else self.rounds/self.wins, 0 if self.wins == 0 else self.u_left/self.wins, 0 if self.wins == 0 else self.e_left/self.wins)
 
 def sim():
     global resultText
-    for i in range(1):
-        combatStats=getStats(i)
-        mountCombatStats=getMountStats(i)
-        setTurnOrder()
-        fightRound(i, combatStats, mountCombatStats)
-        resBox.set(resultText)
-        print resultText
-        resultText = ""
+    global num
+    results = [wincounter(), wincounter(), wincounter()]
+    for j in range(1000):
+        #copy number of units for running counts
+        num=[[numbers[0][0].get(), numbers[0][1].get()], [numbers[1][0].get(), numbers[1][1].get()]]
+        #this will represent numbers of wounds left, not models
+        for i in range(0, 2):
+            num[i][0]=num[i][0] * int(stats[i]["W"].get())
+        for i in range(12):
+            combatStats=getStats(i)
+            mountCombatStats=getMountStats(i)
+            setTurnOrder()
+            outcome = fightRound(i, combatStats, mountCombatStats)
+            #print resultText
+            resultText = ""
+            if not outcome[0]:
+                results[outcome[1]].wins += 1
+                results[outcome[1]].rounds += i+1
+                results[outcome[1]].u_left += num[outcome[1]][0]
+                results[outcome[1]].e_left += num[not outcome[1]][0]                
+                break
+            #resBox.set(resultText)
+        if outcome[0]:
+            results[2].wins += 1
+            results[2].rounds += i+1
+            results[2].u_left += num[0][0]
+            results[2].e_left += num[1][0]  
+            
+    for a in results:
+        print a
+            
     
 def saveUnit(n):
     f = asksaveasfile(mode='w', defaultextension=".whs", initialfile=names[n].get())
