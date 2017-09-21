@@ -3,7 +3,8 @@ Garde Noir
 0,0,0,0,
 Halberd
 20mm
-Always Strikes First,
+Always Strikes First,Stubborn,
 
 
 To-Hit(Failures),To-Wound(1s),
+

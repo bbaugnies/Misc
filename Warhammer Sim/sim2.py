@@ -47,7 +47,7 @@ baseSizes = (StringVar(frame), StringVar(frame))
 rules=(dict(), dict())
 ruleOptions=["Always Strikes First", "Always Strikes Last", "Armour Piercing", "BSB",
     "Devastating Charge", "Has Champion", "Has Charged", "Ignore Save",  
-    "Monstrous Support", "Mounted", "Stomp", "Stubborn", "Thunderstomp", "Unbreakable"]
+    "Monstrous Support", "Mounted", "Stomp", "Stubborn", "Thunderstomp", "Unbreakable", "Unstable"]
 ruleOptions=sorted(ruleOptions)
 valueRules=["Auto-wound", "Bonus To-Hit", "Bonus To-Wound", "Extra Attack", "Fight in Extra Ranks", "Killing Blow",
     "To-Hit Penalty", "To-Wound Penalty"]
@@ -423,7 +423,7 @@ def getAttacks(unit, losses):
         apm += (1+rules[unit]["Random Attacks"][2].get())/2*rules[unit]["Random Attacks"][1].get()
     if rules[unit]["Devastating Charge"].get() and rules[unit]["Has Charged"].get():    apm+=1
         
-    available= int(num[unit][0]) - losses
+    available = int(num[unit][0]) - losses
     available = int(ceil(available/stats[unit]["W"].get()))
     av_enemy = int(ceil(num[not unit][0] / stats[not unit]["W"].get()))
     
@@ -525,6 +525,7 @@ def attack(attacker, attacks, cstats, rules):
     
 #Calculates the combat resolution
 #kills: the number of kills done during the round
+#return ([id of the looser], [amount lost by], [if looser is steadfast], [rank bonus of the looser])
 def combatResolution(kills):
     global resultText
     result = [kills[0], kills[1]]
@@ -555,10 +556,11 @@ def combatResolution(kills):
         return 0
     return (looser, res, steadfast, rank[looser])
     
-    
+# Returns true if break test passed, false otherwise
 def breakTest(cr):
     global resultText
     
+    if num[cr[0]][0] <= 0: return False
     if rules[cr[0]]["Unbreakable"].get():
         resultText += "Break test passed, Unbreakable"
         return True
@@ -680,10 +682,14 @@ def fightRound(roundn, stats, mstats):
         num[i][0]= cur
     resultText += str(num) + "\n"
     cr = combatResolution(kills)
-    if cr != 0: return (breakTest(cr), cr[0])
+    # cr[0] = id of looser
+    if cr != 0:
+        if rules[cr[0]]["Unstable"].get():
+            num[cr[0]][0] = num[cr[0]][0] - abs(cr[1])
+        return (breakTest(cr), cr[0])
     else: return (True, "tie")
     
-    
+itercount = 1000    
 class wincounter:
     wins = 0
     rounds = 0
@@ -691,13 +697,13 @@ class wincounter:
     e_left = 0
     
     def __str__(self):
-        return "wins: {}\naverage rounds: {}\naverage left:{}\naverage enemy left: {}".format(self.wins, 0 if self.wins == 0 else self.rounds/self.wins, 0 if self.wins == 0 else self.u_left/self.wins, 0 if self.wins == 0 else self.e_left/self.wins)
+        return "occurence: {}%\naverage rounds: {}\naverage left:{}\naverage enemy left: {}\n-------------------\n".format(self.wins/itercount*100, 0 if self.wins == 0 else self.rounds/self.wins, 0 if self.wins == 0 else self.u_left/self.wins, 0 if self.wins == 0 else self.e_left/self.wins)
 
 def sim():
     global resultText
     global num
     results = [wincounter(), wincounter(), wincounter()]
-    for j in range(1000):
+    for j in range(itercount):
         #copy number of units for running counts
         num=[[numbers[0][0].get(), numbers[0][1].get()], [numbers[1][0].get(), numbers[1][1].get()]]
         #this will represent numbers of wounds left, not models
@@ -711,10 +717,10 @@ def sim():
             #print resultText
             resultText = ""
             if not outcome[0]:
-                results[outcome[1]].wins += 1
-                results[outcome[1]].rounds += i+1
-                results[outcome[1]].u_left += num[outcome[1]][0]
-                results[outcome[1]].e_left += num[not outcome[1]][0]                
+                results[not outcome[1]].wins += 1
+                results[not outcome[1]].rounds += i+1
+                results[not outcome[1]].u_left += num[not outcome[1]][0]
+                results[not outcome[1]].e_left += num[outcome[1]][0]                
                 break
             #resBox.set(resultText)
         if outcome[0]:
@@ -724,7 +730,10 @@ def sim():
             results[2].e_left += num[1][0]  
             
     for a in results:
-        print a
+        resultText += str(a)
+    resultText += "\n"
+    print resultText
+    resBox.set(resultText)
             
     
 def saveUnit(n):
