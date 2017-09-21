@@ -11,11 +11,16 @@ from copy import *
 from math import *
 from random import randint
 import os
+import matplotlib.pyplot as plt
+import numpy
+
 
 
 num = []
 turnOrder = []
 resultText = ""
+itercount = 1000
+
 
 root = tk.Tk()
 root.wm_title("Warhammer Sim")
@@ -429,7 +434,7 @@ def getAttacks(unit, losses):
     
     #current fronts of both units
     r = [min(available, int(num[unit][1])), min(av_enemy, int(num[not unit][1]))]
-    width = [int(baseSizes[unit].get()[:-2]), int(baseSizes[not unit].get()[:-2])]
+    width = [int(baseSizes[unit].                                                                                                               get()[:-2]), int(baseSizes[not unit].get()[:-2])]
     #front in mm
     r= [r[0]*width[0], r[1]*width[1]]
     availableWidth = min(r)
@@ -555,6 +560,7 @@ def combatResolution(kills):
         resultText += "combat is tied"
         return 0
     return (looser, res, steadfast, rank[looser])
+    
     
 # Returns true if break test passed, false otherwise
 def breakTest(cr):
@@ -689,7 +695,7 @@ def fightRound(roundn, stats, mstats):
         return (breakTest(cr), cr[0])
     else: return (True, "tie")
     
-itercount = 1000    
+    
 class wincounter:
     wins = 0
     rounds = 0
@@ -702,6 +708,13 @@ class wincounter:
 def sim():
     global resultText
     global num
+    plt.figure(1)
+    plt.clf()
+    roundReached = numpy.zeros(12)
+    alivePerRound = numpy.zeros(24).reshape(2, 12)
+    resultPerRound = numpy.zeros(36).reshape(3, 12)
+    resultPerRound_individual = numpy.zeros(36).reshape(3, 12)
+    
     results = [wincounter(), wincounter(), wincounter()]
     for j in range(itercount):
         #copy number of units for running counts
@@ -710,30 +723,78 @@ def sim():
         for i in range(0, 2):
             num[i][0]=num[i][0] * int(stats[i]["W"].get())
         for i in range(12):
+            roundReached[i] += 1
             combatStats=getStats(i)
             mountCombatStats=getMountStats(i)
             setTurnOrder()
             outcome = fightRound(i, combatStats, mountCombatStats)
             #print resultText
             resultText = ""
+            for u in range(2):
+                alivePerRound[u][i] += num[u][0]
             if not outcome[0]:
+                a = (0 if outcome[1] else 1)
+                for r in range(i, 12):
+                    resultPerRound[a][r] += 1
+                resultPerRound_individual[a][i] += 1
                 results[not outcome[1]].wins += 1
                 results[not outcome[1]].rounds += i+1
                 results[not outcome[1]].u_left += num[not outcome[1]][0]
                 results[not outcome[1]].e_left += num[outcome[1]][0]                
                 break
-            #resBox.set(resultText)
+            else:
+                resultPerRound[2][i] += 1
+                resultPerRound_individual[2][i] += 1
         if outcome[0]:
             results[2].wins += 1
             results[2].rounds += i+1
             results[2].u_left += num[0][0]
             results[2].e_left += num[1][0]  
             
-    for a in results:
-        resultText += str(a)
+            
+    #set output string
+    resultText += "{} Wins:\n".format(names[0].get())
+    resultText += str(results[0])
+    resultText += "{} Wins:\n".format(names[1].get())
+    resultText += str(results[1])
+    resultText += "Draws:\n"
+    resultText += str(results[2])
     resultText += "\n"
-    print resultText
+    #print resultText
+    
+    
+    #plot results
+    axis = range(1,13)
+    for u in range(2):
+        for i in range(12):
+            alivePerRound[u][i] = 0 if roundReached[i] == 0 else alivePerRound[u][i]/roundReached[i]
+    for u in range(3):
+        for i in range(12):
+            resultPerRound[u][i] = resultPerRound[u][i]/itercount*100
+            resultPerRound_individual[u][i] = 0 if roundReached[i] == 0 else resultPerRound_individual[u][i]/roundReached[i]*100
+    for i in range(12):
+        roundReached[i] = roundReached[i]/itercount*100
     resBox.set(resultText)
+    plt.subplot(311)
+    plt.plot(axis, alivePerRound[0], "b-", label = names[0])
+    plt.plot(axis, alivePerRound[1], "r-", label = names[1])
+    plt.xlabel("Round")
+    plt.ylabel("Wounds remaining")
+    plt.subplot(312)
+    plt.bar(axis, resultPerRound[0], 0.35, color="b", label = "{} wins".format(names[0]))
+    plt.bar(axis, resultPerRound[2], 0.35, color="g", bottom=resultPerRound[0], label = "draws")
+    plt.bar(axis, resultPerRound[1], 0.35, color="r", bottom=resultPerRound[2]+resultPerRound[0], label = "{} wins".format(names[1]))
+    plt.xlabel("Round")
+    plt.ylabel("% of occurence")
+    plt.subplot(313)
+    plt.bar(axis, resultPerRound_individual[0], 0.35, color="b", label = "{} wins".format(names[0]))
+    plt.bar(axis, resultPerRound_individual[2], 0.35, color="g", bottom=resultPerRound_individual[0], label = "draws")
+    plt.bar(axis, resultPerRound_individual[1], 0.35, color="r", bottom=resultPerRound_individual[2]+resultPerRound_individual[0], label = "{} wins".format(names[1]))
+    plt.plot(axis, roundReached, "b-")
+    plt.xlabel("Round")
+    plt.ylabel("% of occurence")
+    plt.ion()
+    plt.show()
             
     
 def saveUnit(n):
