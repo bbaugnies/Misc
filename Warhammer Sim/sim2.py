@@ -482,7 +482,8 @@ def getAttacks(unit, losses):
             attacks += rankAttacks
         available -= int(num[unit][1])
         supportRanks-=1
-    if rules[unit]["Predation"].get():    attacks = attacks * (1+1/6)
+    #predation handled during attack
+    #if rules[unit]["Predation"].get():    attacks = attacks * (1+1/6)
     #shortenable?
     return (int((max(0, attacks)+ (1 if attacks >=0 else 0)) if rules[unit]["Has Champion"].get() else max(0, attacks)), int(max(0, firstRank)))
    
@@ -519,9 +520,34 @@ def attack(attacker, attacks, cstats, rules):
         auto_w = rules[attacker]["Auto-wound"][1].get()
     kb = 7
     if rules[attacker]["Killing Blow"][0].get():
-        kb = rules[attacker]["Killing Blow"][1].get()    
-    
-    for i in range(0, attacks):
+        kb = rules[attacker]["Killing Blow"][1].get()
+    pred = 0
+    for i in range(attacks):
+        r = calcRerolls(attacker, cstats, "To-Hit")
+        if rules[attacker]["Predation"].get() and r == 6:
+            pred += 1
+        if r < cstats[attacker]["To-Hit"]:
+            continue
+        
+        if r > auto_w:
+            r = 0
+        else:
+            r = calcRerolls(attacker, cstats, "To-Wound")
+            if r < cstats[attacker]["To-Wound"]:
+                continue
+        
+        if r > kb:
+            r = 0
+        else:
+            r = calcRerolls(not attacker, cstats, "Save")
+            if r >= cstats[not attacker]["Save"]:
+                continue
+         
+        r = calcRerolls(not attacker, cstats, "Ward")
+        if r < cstats[not attacker]["Ward"]:
+            #print "WOUND"
+            wounds += 1
+    for i in range(pred):
         r = calcRerolls(attacker, cstats, "To-Hit")
         if r < cstats[attacker]["To-Hit"]:
             continue
@@ -544,8 +570,8 @@ def attack(attacker, attacks, cstats, rules):
         if r < cstats[not attacker]["Ward"]:
             #print "WOUND"
             wounds += 1
+    
         
-
     return wounds
     
     
@@ -589,7 +615,6 @@ def combatResolution(kills):
 # Returns true if break test passed, false otherwise
 def breakTest(cr):
     global resultText
-    
     if num[cr[0]][0] <= 0: return False
     if rules[cr[0]]["Unbreakable"].get():
         resultText += "Break test passed, Unbreakable"
@@ -619,7 +644,23 @@ def breakTest(cr):
     return total <= target
     
         
-                
+def demonBreak(cr, losses):
+    if num[cr[0]][0] <= 0: return False
+    target = max(0, stats[cr[0]]["Ld"].get() - abs(cr[1]))
+    total = randint(1, 6) + randint(1, 6)
+    if total > 8 and rules[cr[0]]["BSB"].get():
+        total = randint(1,6) + randint(1, 6)
+    if total == 2:
+        num[cr[0]][0] += losses
+    elif total <= target:
+        pass
+    elif total == 12:
+        num[cr[0]][0] = 0
+    else:
+        num[cr[0]][0] -= total - target
+    return total <= target
+
+
     
     
     
@@ -640,7 +681,6 @@ def stomp(unit, models, stats, rules):
     rules[unit]["Auto-wound"][0].set(temp[0])
     stats[unit]["To-Hit"] = temp[1]
     return res
-      
         
 dummyrules = dict()
 for i in ruleOptions+armyRules:
@@ -717,7 +757,7 @@ def fightRound(roundn, stats, mstats):
         if rules[cr[0]]["Unstable"].get():
             num[cr[0]][0] = num[cr[0]][0] - abs(cr[1])
         if rules[cr[0]]["Demonic Instability"].get():
-            pass
+            demonBreak(cr, kills[not cr[0]])
         return (breakTest(cr), cr[0])
     else: return (True, "tie")
     
