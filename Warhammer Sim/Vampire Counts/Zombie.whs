@@ -3,8 +3,8 @@ Zombie
 0,0,0,0,
 Hand Weapon
 20mm
-Always Strikes Last,Unbreakable,Unstable,
-
+Always Strikes Last,Immune Psychology,Unbreakable,Unstable,
+Fear(0),
 
 
 

@@ -19,7 +19,7 @@ import numpy
 num = []
 turnOrder = []
 resultText = ""
-itercount = 1000
+itercount = 10000
 
 
 root = tk.Tk()
@@ -51,11 +51,11 @@ baseSizeOptions=["20mm", "25mm", "40mm", "50mm"]
 baseSizes = (StringVar(frame), StringVar(frame))
 rules=(dict(), dict())
 ruleOptions=["Always Strikes First", "Always Strikes Last", "Armour Piercing", "BSB",
-    "Devastating Charge", "Has Champion", "Has Charged", "Ignore Save",  
+    "Devastating Charge", "Has Champion", "Has Charged", "Immune Psychology", "Ignore Save",  
     "Monstrous Support", "Mounted", "Stomp", "Stubborn", "Thunderstomp", "Unbreakable", "Unstable"]
 ruleOptions=sorted(ruleOptions)
-valueRules=["Auto-wound", "Bonus To-Hit", "Bonus To-Wound", "Extra Attack", "Fight in Extra Ranks", "Killing Blow",
-    "To-Hit Penalty", "To-Wound Penalty"]
+valueRules=["Auto-wound", "Bonus To-Hit", "Bonus To-Wound", "Extra Attack", "Fear", "Fight in Extra Ranks", "Killing Blow",
+    "Static CR", "To-Hit Penalty", "To-Wound Penalty"]
 valueRules=sorted(valueRules)
 diceRules=["Multiple Wounds", "Random Attacks"]
 diceRules=sorted(diceRules)
@@ -229,13 +229,32 @@ def onFrameConfigure(canvas):
 #----------------------------------------------------------
 #Functions
 
+def fearTest(penalty, unit):
+    
+    target = stats[unit]["Ld"].get()-penalty
+    dice = [randint(1,6), randint(1,6), randint(1,6)]
+    if rules[unit]["Cold-blooded"].get():
+        total = sum(dice) - max(dice)
+    else:
+        total = dice[0] + dice[1]
+        
+    if total > target and rules[unit]["BSB"].get():
+        dice = [randint(1,6), randint(1,6), randint(1,6)]
+        if rules[unit]["Cold-blooded"].get():
+            total = sum(dice) - max(dice)
+        else:
+            total = dice[0] + dice[1]
+    return total <= target
+    
+    
+
 #Return the combatStats of both units
 #These are the target rolls for hitting, wounding, saving, and wards
 #as well as the order of attack (1 for first, -1 for second, 0 for simultaneous)
 #turn: the number of the turn
 def getStats(turn):
     s = (dict(), dict())
-    ws = (stats[0]["WS"].get(), stats[1]["WS"].get())
+    ws = [stats[0]["WS"].get(), stats[1]["WS"].get()]
     strength = [stats[0]["S"].get(), stats[1]["S"].get()]
     toughness = (stats[0]["T"].get(), stats[1]["T"].get())
     ini = (stats[0]["I"].get(), stats[1]["I"].get())
@@ -258,6 +277,10 @@ def getStats(turn):
                 strength[i]+=1
             elif weap[i] == "Flail" or (weap[i] == "Lance" and rules[i]["Has Charged"].get()):
                 strength[i]+=2
+                
+        if rules[not i]["Fear"][0].get() and not rules[i]["Immune Psychology"].get():
+            if not fearTest(rules[not i]["Fear"][1].get(), i):
+                ws[i] = 1
         
         if ws[i]>ws[not i]:
             s[i]["To-Hit"]=3
@@ -272,16 +295,17 @@ def getStats(turn):
         s[i]["To-Wound"] = min(6, s[i]["To-Wound"])
         s[i]["To-Wound"] = max(2, s[i]["To-Wound"])
         
-        if rules[i]["Ignore Save"].get(): s[i]["Save"] = 7
+        if rules[not i]["Ignore Save"].get(): s[i]["Save"] = 7
         else:
-            s[i]["Save"] = armor[not i]
-            if rules[i]["Armour Piercing"].get():    s[i]["Save"] += 1
-            if strength[i]>3 :  s[i]["Save"] += strength[i]-3
+            s[i]["Save"] = armor[i]
+            if rules[not i]["Armour Piercing"].get():    s[i]["Save"] += 1
+            if strength[not i]>3 :  s[i]["Save"] += strength[not i]-3
         s[i]["Save"]= min(7, s[i]["Save"])
         s[i]["Save"] = max(2, s[i]["Save"])
         
-        s[i]["Ward"] = ward[not i]
+        s[i]["Ward"] = ward[i]
         
+        #This part is only usefull for rerolls, rest is taken care of by setTurnOrder
         s[i]["Priority"] = rules[i]["Always Strikes First"].get() - rules[i]["Always Strikes Last"].get()
     
     for i in range(1):
@@ -468,24 +492,20 @@ def calcRerolls(attacker, cstats, stat):
     if rules[attacker][stat][0].get():
         reroll = rules[attacker][stat][1].get()
         if reroll=="1s" and r == 1:
+            #print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
-            return r
         if reroll=="Failures" and r < cstats[attacker][stat]:
+            #print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
-            return r
         if reroll=="6s" and r == 6:
+            #print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
-            return r
         if reroll=="Successes" and r >= cstats[attacker][stat]:
+            #print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
-            return r
-    #print "rolled {} to {}".format(r, stat)
+    #print "rolled {} to {}, target : {}".format(r, stat, cstats[attacker][stat])
     return r
-    
-def hit(attacker, cstats):
-    r = randint(1, 6)
-    r = calcRerolls(attacker, "To-Hit", r, cstats)   
-    return r     
+     
     
 #Resolves the attacks of one side, calculating the amount of kills
 #attacker: the identifier of the attacking side (0 or 1)
@@ -517,11 +537,12 @@ def attack(attacker, attacks, cstats, rules):
             r = 0
         else:
             r = calcRerolls(not attacker, cstats, "Save")
-            if r >= cstats[attacker]["Save"]:
+            if r >= cstats[not attacker]["Save"]:
                 continue
          
         r = calcRerolls(not attacker, cstats, "Ward")
-        if r < cstats[attacker]["Ward"]:
+        if r < cstats[not attacker]["Ward"]:
+            #print "WOUND"
             wounds += 1
         
 
@@ -534,6 +555,9 @@ def attack(attacker, attacks, cstats, rules):
 def combatResolution(kills):
     global resultText
     result = [kills[0], kills[1]]
+    for i in range(2):
+        if rules[i]["Static CR"][0].get():
+            result[i] += rules[i]["Static CR"][1].get()
     rank=[0, 0]
     for i in range(2):
         left = num[i][0]
@@ -578,14 +602,14 @@ def breakTest(cr):
         target += cr[3]
     dice = [randint(1,6), randint(1,6), randint(1,6)]
     if rules[cr[0]]["Cold-blooded"].get():
-        total = sum(dice) - min(dice)
+        total = sum(dice) - max(dice)
     else:
         total = dice[0] + dice[1]
         
     if total > target and rules[cr[0]]["BSB"].get():
         dice = [randint(1,6), randint(1,6), randint(1,6)]
         if rules[cr[0]]["Cold-blooded"].get():
-            total = sum(dice) - min(dice)
+            total = sum(dice) - max(dice)
         else:
             total = dice[0] + dice[1]
     if total <= target:

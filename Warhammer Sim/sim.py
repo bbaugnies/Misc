@@ -44,11 +44,11 @@ baseSizeOptions=["20mm", "25mm", "40mm", "50mm"]
 baseSizes = (StringVar(frame), StringVar(frame))
 rules=(dict(), dict())
 ruleOptions=["Always Strikes First", "Always Strikes Last", "Armour Piercing", "BSB",
-    "Devastating Charge", "Has Champion", "Has Charged", "Ignore Save",  
+    "Devastating Charge", "Has Champion", "Has Charged", "Immune Psychology", "Ignore Save",  
     "Monstrous Support", "Mounted", "Stomp", "Stubborn", "Thunderstomp", "Unbreakable", "Unstable"]
 ruleOptions=sorted(ruleOptions)
-valueRules=["Auto-wound", "Bonus To-Hit", "Bonus To-Wound", "Extra Attack", "Fight in Extra Ranks", "Killing Blow",
-    "To-Hit Penalty", "To-Wound Penalty"]
+valueRules=["Auto-wound", "Bonus To-Hit", "Bonus To-Wound", "Extra Attack", "Fear", "Fight in Extra Ranks", "Killing Blow",
+    "Static CR", "To-Hit Penalty", "To-Wound Penalty"]
 valueRules=sorted(valueRules)
 diceRules=["Multiple Wounds", "Random Attacks"]
 diceRules=sorted(diceRules)
