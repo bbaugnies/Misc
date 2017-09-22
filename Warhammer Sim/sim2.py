@@ -62,7 +62,7 @@ diceRules=sorted(diceRules)
 rerolls=["To-Hit", "To-Wound", "Save", "Ward"]
 rerolls=sorted(rerolls)
 rerollOptions=["1s", "6s", "Failures", "Successes"]
-armyRules=["Cold-blooded", "Predation", "Strength in Numbers"]
+armyRules=["Cold-blooded", "Demonic Instability", "Predation", "Strength in Numbers"]
 armyRules=sorted(armyRules)
 combatStatList=["To-Hit", "To-Wound", "Save", "Ward", "Priority"]
 resBox = StringVar(frame, "result")
@@ -716,6 +716,8 @@ def fightRound(roundn, stats, mstats):
     if cr != 0:
         if rules[cr[0]]["Unstable"].get():
             num[cr[0]][0] = num[cr[0]][0] - abs(cr[1])
+        if rules[cr[0]]["Demonic Instability"].get():
+            pass
         return (breakTest(cr), cr[0])
     else: return (True, "tie")
     

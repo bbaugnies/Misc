@@ -55,7 +55,7 @@ diceRules=sorted(diceRules)
 rerolls=["To-Hit", "To-Wound", "Save", "Ward"]
 rerolls=sorted(rerolls)
 rerollOptions=["1s", "6s", "Failures", "Successes"]
-armyRules=["Cold-blooded", "Predation", "Strength in Numbers"]
+armyRules=["Cold-blooded", "Demonic Instability", "Predation", "Strength in Numbers"]
 armyRules=sorted(armyRules)
 combatStatList=["To-hit", "To-wound", "Enemy Save", "Enemy Ward", "Priority"]
 resBox = StringVar(frame, "result")
@@ -526,6 +526,9 @@ def attack(attacker, attacks, cstats, rules):
 def combatResolution(kills):
     global resultText
     result = [kills[0], kills[1]]
+    for i in range(2):
+        if rules[i]["Static CR"][0].get():
+            result[i] += rules[i]["Static CR"][1].get()
     rank=[0, 0]
     for i in range(2):
         left = numbers[i][0].get()
