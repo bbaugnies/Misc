@@ -65,7 +65,7 @@ rerollOptions=["1s", "6s", "Failures", "Successes"]
 armyRules=["Cold-blooded", "Demonic Instability", "Predation", "Strength in Numbers"]
 armyRules=sorted(armyRules)
 combatStatList=["To-Hit", "To-Wound", "Save", "Ward", "Priority"]
-resBox = StringVar(frame, "result")
+resBox = StringVar(frame, "")
     
     
 
@@ -826,6 +826,7 @@ def sim():
     resultText += "Draws:\n"
     resultText += str(results[2])
     resultText += "\n"
+    resBox.set(resultText)
     #print resultText
     
     
@@ -840,7 +841,6 @@ def sim():
             resultPerRound_individual[u][i] = 0 if roundReached[i] == 0 else resultPerRound_individual[u][i]/roundReached[i]*100
     for i in range(12):
         roundReached[i] = roundReached[i]/itercount*100
-    resBox.set(resultText)
     plt.subplot(311)
     plt.plot(axis, alivePerRound[0], "b-", label = names[0])
     plt.plot(axis, alivePerRound[1], "r-", label = names[1])
