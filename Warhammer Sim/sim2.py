@@ -20,6 +20,11 @@ num = []
 turnOrder = []
 resultText = ""
 itercount = 10000
+roundcount = 12
+debug = False
+if debug:
+    itercount = 1
+    roundcount = 1
 
 
 root = tk.Tk()
@@ -278,6 +283,7 @@ def getStats(turn):
             elif weap[i] == "Flail" or (weap[i] == "Lance" and rules[i]["Has Charged"].get()):
                 strength[i]+=2
                 
+    for i in range(2):
         if rules[not i]["Fear"][0].get() and not rules[i]["Immune Psychology"].get():
             if not fearTest(rules[not i]["Fear"][1].get(), i):
                 ws[i] = 1
@@ -493,18 +499,23 @@ def calcRerolls(attacker, cstats, stat):
     if rules[attacker][stat][0].get():
         reroll = rules[attacker][stat][1].get()
         if reroll=="1s" and r == 1:
-            #print "rolled {} to {}, rerolling".format(r, stat)
+            if debug:
+                print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
         if reroll=="Failures" and r < cstats[attacker][stat]:
-            #print "rolled {} to {}, rerolling".format(r, stat)
+            if debug:
+                print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
         if reroll=="6s" and r == 6:
-            #print "rolled {} to {}, rerolling".format(r, stat)
+            if debug:
+                print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
         if reroll=="Successes" and r >= cstats[attacker][stat]:
-            #print "rolled {} to {}, rerolling".format(r, stat)
+            if debug:
+                print "rolled {} to {}, rerolling".format(r, stat)
             r=randint(1,6)
-    #print "rolled {} to {}, target : {}".format(r, stat, cstats[attacker][stat])
+    if debug:
+        print "rolled {} to {}, target : {}".format(r, stat, cstats[attacker][stat])
     return r
      
     
@@ -513,7 +524,8 @@ def calcRerolls(attacker, cstats, stat):
 #attacks: the number of attacks carried out
 #cstats: the ordered combatStats of both units
 def attack(attacker, attacks, cstats, rules):
-    #print "{} attacks by {}: {}".format(attacks, attacker, cstats)
+    if debug:
+        print "{} attacks by {}: {}".format(attacks, attacker, cstats)
     wounds = 0
     auto_w = 7
     if rules[attacker]["Auto-wound"][0].get():
@@ -545,7 +557,8 @@ def attack(attacker, attacks, cstats, rules):
          
         r = calcRerolls(not attacker, cstats, "Ward")
         if r < cstats[not attacker]["Ward"]:
-            #print "WOUND"
+            if debug:
+                print "WOUND"
             wounds += 1
     for i in range(pred):
         r = calcRerolls(attacker, cstats, "To-Hit")
@@ -568,7 +581,8 @@ def attack(attacker, attacks, cstats, rules):
          
         r = calcRerolls(not attacker, cstats, "Ward")
         if r < cstats[not attacker]["Ward"]:
-            #print "WOUND"
+            if debug:
+                print "WOUND"
             wounds += 1
     
         
@@ -776,10 +790,11 @@ def sim():
     global num
     plt.figure(1)
     plt.clf()
-    roundReached = numpy.zeros(12)
-    alivePerRound = numpy.zeros(24).reshape(2, 12)
-    resultPerRound = numpy.zeros(36).reshape(3, 12)
-    resultPerRound_individual = numpy.zeros(36).reshape(3, 12)
+    roundReached = numpy.zeros(roundcount)
+    alivePerRound = numpy.zeros(roundcount*2).reshape(2, roundcount)
+    woundsPerRound = numpy.zeros(roundcount*2).reshape(2, roundcount)
+    resultPerRound = numpy.zeros(roundcount*3).reshape(3, roundcount)
+    resultPerRound_individual = numpy.zeros(roundcount*3).reshape(3, roundcount)
     
     results = [wincounter(), wincounter(), wincounter()]
     for j in range(itercount):
@@ -788,19 +803,23 @@ def sim():
         #this will represent numbers of wounds left, not models
         for i in range(0, 2):
             num[i][0]=num[i][0] * int(stats[i]["W"].get())
-        for i in range(12):
+        for i in range(roundcount):
             roundReached[i] += 1
             combatStats=getStats(i)
             mountCombatStats=getMountStats(i)
             setTurnOrder()
             outcome = fightRound(i, combatStats, mountCombatStats)
-            #print resultText
+            if debug:    
+                print resultText
             resultText = ""
             for u in range(2):
+                woundsPerRound[u][i] = (numbers[u][0].get() if i == 0 else alivePerRound[u][i]) - num[u][0]
                 alivePerRound[u][i] += num[u][0]
+            if debug:
+                print outcome
             if not outcome[0]:
                 a = (0 if outcome[1] else 1)
-                for r in range(i, 12):
+                for r in range(i, roundcount):
                     resultPerRound[a][r] += 1
                 resultPerRound_individual[a][i] += 1
                 results[not outcome[1]].wins += 1
@@ -831,31 +850,41 @@ def sim():
     
     
     #plot results
-    axis = range(1,13)
+    axis = range(1,roundcount+1)
+    wax1 = []
+    wax2 = []
+    for i in axis:
+        wax1.append(i-0.2)
+        wax2.append(i+0.2)
     for u in range(2):
-        for i in range(12):
+        for i in range(roundcount):
             alivePerRound[u][i] = 0 if roundReached[i] == 0 else alivePerRound[u][i]/roundReached[i]
+            woundsPerRound[u][i] = woundsPerRound[u][i]/itercount
     for u in range(3):
-        for i in range(12):
+        for i in range(roundcount):
             resultPerRound[u][i] = resultPerRound[u][i]/itercount*100
             resultPerRound_individual[u][i] = 0 if roundReached[i] == 0 else resultPerRound_individual[u][i]/roundReached[i]*100
-    for i in range(12):
+    for i in range(roundcount):
         roundReached[i] = roundReached[i]/itercount*100
-    plt.subplot(311)
+    plt.subplot(221)
     plt.plot(axis, alivePerRound[0], "b-", label = names[0])
     plt.plot(axis, alivePerRound[1], "r-", label = names[1])
     plt.xlabel("Round")
     plt.ylabel("Wounds remaining")
-    plt.subplot(312)
-    plt.bar(axis, resultPerRound[0], 0.35, color="b", label = "{} wins".format(names[0]))
-    plt.bar(axis, resultPerRound[2], 0.35, color="g", bottom=resultPerRound[0], label = "draws")
-    plt.bar(axis, resultPerRound[1], 0.35, color="r", bottom=resultPerRound[2]+resultPerRound[0], label = "{} wins".format(names[1]))
+    plt.subplot(222)
+    plt.bar(wax1, woundsPerRound[1], 0.40, color="b")
+    plt.bar(wax2, woundsPerRound[0], 0.40, color="r")
+    plt.ylabel("Wound done in round")
+    plt.subplot(223)
+    plt.bar(axis, resultPerRound[0], 0.40, color="b", label = "{} wins".format(names[0]))
+    plt.bar(axis, resultPerRound[2], 0.40, color="g", bottom=resultPerRound[0], label = "draws")
+    plt.bar(axis, resultPerRound[1], 0.40, color="r", bottom=resultPerRound[2]+resultPerRound[0], label = "{} wins".format(names[1]))
     plt.xlabel("Round")
     plt.ylabel("% of occurence")
-    plt.subplot(313)
-    plt.bar(axis, resultPerRound_individual[0], 0.35, color="b", label = "{} wins".format(names[0]))
-    plt.bar(axis, resultPerRound_individual[2], 0.35, color="g", bottom=resultPerRound_individual[0], label = "draws")
-    plt.bar(axis, resultPerRound_individual[1], 0.35, color="r", bottom=resultPerRound_individual[2]+resultPerRound_individual[0], label = "{} wins".format(names[1]))
+    plt.subplot(224)
+    plt.bar(axis, resultPerRound_individual[0], 0.40, color="b", label = "{} wins".format(names[0]))
+    plt.bar(axis, resultPerRound_individual[2], 0.40, color="g", bottom=resultPerRound_individual[0], label = "draws")
+    plt.bar(axis, resultPerRound_individual[1], 0.40, color="r", bottom=resultPerRound_individual[2]+resultPerRound_individual[0], label = "{} wins".format(names[1]))
     plt.plot(axis, roundReached, "b-")
     plt.xlabel("Round")
     plt.ylabel("% of occurence")
