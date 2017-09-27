@@ -791,36 +791,41 @@ def sim():
     plt.figure(1)
     plt.clf()
     roundReached = numpy.zeros(roundcount)
-    alivePerRound = numpy.zeros(roundcount*2).reshape(2, roundcount)
+    alivePerRound = numpy.zeros((roundcount+1)*2).reshape(2, roundcount+1)
     woundsPerRound = numpy.zeros(roundcount*2).reshape(2, roundcount)
     resultPerRound = numpy.zeros(roundcount*3).reshape(3, roundcount)
     resultPerRound_individual = numpy.zeros(roundcount*3).reshape(3, roundcount)
+    survivalChance = numpy.zeros(roundcount*2).reshape(2, roundcount)
     
     results = [wincounter(), wincounter(), wincounter()]
+    alivePerRound[0][0] = numbers[0][0].get()
+    alivePerRound[1][0] = numbers[1][0].get()
     for j in range(itercount):
         #copy number of units for running counts
         num=[[numbers[0][0].get(), numbers[0][1].get()], [numbers[1][0].get(), numbers[1][1].get()]]
         #this will represent numbers of wounds left, not models
-        for i in range(0, 2):
+        for i in range(2):
             num[i][0]=num[i][0] * int(stats[i]["W"].get())
         for i in range(roundcount):
             roundReached[i] += 1
             combatStats=getStats(i)
             mountCombatStats=getMountStats(i)
             setTurnOrder()
+            curNum = [num[0][0], num[1][0]]
             outcome = fightRound(i, combatStats, mountCombatStats)
             if debug:    
                 print resultText
             resultText = ""
             for u in range(2):
-                woundsPerRound[u][i] = (numbers[u][0].get() if i == 0 else alivePerRound[u][i]) - num[u][0]
-                alivePerRound[u][i] += num[u][0]
+                woundsPerRound[u][i] += curNum[u] - num[u][0]
+                alivePerRound[u][i+1] += num[u][0]
             if debug:
                 print outcome
             if not outcome[0]:
                 a = (0 if outcome[1] else 1)
                 for r in range(i, roundcount):
                     resultPerRound[a][r] += 1
+                    survivalChance[a][r] += 1
                 resultPerRound_individual[a][i] += 1
                 results[not outcome[1]].wins += 1
                 results[not outcome[1]].rounds += i+1
@@ -830,6 +835,8 @@ def sim():
             else:
                 resultPerRound[2][i] += 1
                 resultPerRound_individual[2][i] += 1
+                survivalChance[0][i] += 1
+                survivalChance[1][i] += 1
         if outcome[0]:
             results[2].wins += 1
             results[2].rounds += i+1
@@ -851,6 +858,7 @@ def sim():
     
     #plot results
     axis = range(1,roundcount+1)
+    axis0 = range(roundcount+1)
     wax1 = []
     wax2 = []
     for i in axis:
@@ -858,36 +866,38 @@ def sim():
         wax2.append(i+0.2)
     for u in range(2):
         for i in range(roundcount):
-            alivePerRound[u][i] = 0 if roundReached[i] == 0 else alivePerRound[u][i]/roundReached[i]
+            alivePerRound[u][i+1] = 0 if roundReached[i] == 0 else alivePerRound[u][i+1]/roundReached[i]
             woundsPerRound[u][i] = woundsPerRound[u][i]/itercount
+            survivalChance[u][i] = survivalChance[u][i]/itercount*100
     for u in range(3):
         for i in range(roundcount):
             resultPerRound[u][i] = resultPerRound[u][i]/itercount*100
             resultPerRound_individual[u][i] = 0 if roundReached[i] == 0 else resultPerRound_individual[u][i]/roundReached[i]*100
     for i in range(roundcount):
         roundReached[i] = roundReached[i]/itercount*100
-    plt.subplot(221)
-    plt.plot(axis, alivePerRound[0], "b-", label = names[0])
-    plt.plot(axis, alivePerRound[1], "r-", label = names[1])
-    plt.xlabel("Round")
+    plt.subplot(321)
+    plt.plot(axis0, alivePerRound[0], "b-", label = names[0])
+    plt.plot(axis0, alivePerRound[1], "r-", label = names[1])
     plt.ylabel("Wounds remaining")
-    plt.subplot(222)
+    plt.subplot(322)
     plt.bar(wax1, woundsPerRound[1], 0.40, color="b")
     plt.bar(wax2, woundsPerRound[0], 0.40, color="r")
-    plt.ylabel("Wound done in round")
-    plt.subplot(223)
+    plt.ylabel("Wounds done in round")
+    plt.subplot(323)
     plt.bar(axis, resultPerRound[0], 0.40, color="b", label = "{} wins".format(names[0]))
     plt.bar(axis, resultPerRound[2], 0.40, color="g", bottom=resultPerRound[0], label = "draws")
     plt.bar(axis, resultPerRound[1], 0.40, color="r", bottom=resultPerRound[2]+resultPerRound[0], label = "{} wins".format(names[1]))
-    plt.xlabel("Round")
-    plt.ylabel("% of occurence")
-    plt.subplot(224)
+    plt.ylabel("% of occurence (cumulative)")
+    plt.subplot(324)
     plt.bar(axis, resultPerRound_individual[0], 0.40, color="b", label = "{} wins".format(names[0]))
     plt.bar(axis, resultPerRound_individual[2], 0.40, color="g", bottom=resultPerRound_individual[0], label = "draws")
     plt.bar(axis, resultPerRound_individual[1], 0.40, color="r", bottom=resultPerRound_individual[2]+resultPerRound_individual[0], label = "{} wins".format(names[1]))
     plt.plot(axis, roundReached, "b-")
-    plt.xlabel("Round")
-    plt.ylabel("% of occurence")
+    plt.ylabel("% of occurence (per round)")
+    plt.subplot(325)
+    plt.plot(axis, survivalChance[0], "b-")
+    plt.plot(axis, survivalChance[1], "r-")
+    plt.ylabel("Change of surviving to this round")
     plt.ion()
     plt.show()
             

@@ -240,8 +240,7 @@ def getStats(turn):
     twp= (rules[0]["To-Wound Penalty"], rules[1]["To-Wound Penalty"])
     weap = (weapons[0].get(), weapons[1].get())
     
-    for i in range(2):
-    
+    for i in range(2):    
         if weap[i]== "Great Weapon":
             strength[i]+=2
             rules[i]["Always Strikes Last"].set(True)
@@ -252,6 +251,7 @@ def getStats(turn):
             elif weap[i] == "Flail" or (weap[i] == "Lance" and rules[i]["Has Charged"].get()):
                 strength[i]+=2
         
+    for i in range(2):    
         if ws[i]>ws[not i]:
             s[i]["To-hit"]=3
         elif ws[i]*2<ws[not i]: s[i]["To-hit"]=5
