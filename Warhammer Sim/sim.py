@@ -535,7 +535,7 @@ def combatResolution(kills):
         if stats[i]["W"].get() > 1: left -= kills[not i]/stats[i]["W"].get()
         else:   left -= kills[not i]
         if rules[i]["Has Charged"].get(): result[i]+=1
-        if numbers[i][1].get() > 0:
+        if numbers[i][1].get() >= 5:
             rank[i] = left//numbers[i][1].get() - 1 + (left%numbers[i][1].get() >= 5)
         result[i] += min(3, rank[i])
     res = result[0] - result[1]

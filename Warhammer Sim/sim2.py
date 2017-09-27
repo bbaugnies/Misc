@@ -603,7 +603,7 @@ def combatResolution(kills):
         left = num[i][0]
         left = int(ceil(left/stats[i]["W"].get()))
         if rules[i]["Has Charged"].get(): result[i]+=1
-        if num[i][1] > 0:
+        if num[i][1] >= 5:
             rank[i] = left//num[i][1] - 1 + (left%num[i][1] >= 5)
         result[i] += min(3, rank[i])
     res = result[0] - result[1]
@@ -691,7 +691,10 @@ def stomp(unit, models, stats, rules):
     if rules[unit]["Stomp"].get():
         res = [attack(unit, models, stats, rules), models]
     if rules[unit]["Thunderstomp"].get():
-        res = [attack(unit, 3.5*models, stats, rules), models*3.5]
+        a = 0
+        for i in range(models):
+            a += randint(1, 6)
+        res = [attack(unit, a, stats, rules), models*3.5]
     rules[unit]["Auto-wound"][0].set(temp[0])
     stats[unit]["To-Hit"] = temp[1]
     return res
@@ -798,8 +801,8 @@ def sim():
     survivalChance = numpy.zeros(roundcount*2).reshape(2, roundcount)
     
     results = [wincounter(), wincounter(), wincounter()]
-    alivePerRound[0][0] = numbers[0][0].get()
-    alivePerRound[1][0] = numbers[1][0].get()
+    alivePerRound[0][0] = numbers[0][0].get() * stats[0]["W"].get()
+    alivePerRound[1][0] = numbers[1][0].get() * stats[1]["W"].get()
     for j in range(itercount):
         #copy number of units for running counts
         num=[[numbers[0][0].get(), numbers[0][1].get()], [numbers[1][0].get(), numbers[1][1].get()]]
