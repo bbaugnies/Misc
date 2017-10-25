@@ -454,6 +454,7 @@ def getAttacks(unit, losses):
     randApm = 0
     if weapons[unit].get()=="Two Weapons":      apm+=1
     if rules[unit]["Extra Attack"][0].get():    apm+=rules[unit]["Extra Attack"][1].get()
+    #TODO make random attacks actually roll
     if rules[unit]["Random Attacks"][0].get():
         apm += (1+rules[unit]["Random Attacks"][2].get())/2*rules[unit]["Random Attacks"][1].get()
     if rules[unit]["Devastating Charge"].get() and rules[unit]["Has Charged"].get():    apm+=1
@@ -559,7 +560,17 @@ def attack(attacker, attacks, cstats, rules):
         if r < cstats[not attacker]["Ward"]:
             if debug:
                 print "WOUND"
-            wounds += 1
+            if rules[attacker]["Multiple Wounds"][0].get():
+                dmg = 0
+                for i in range(rules[attacker]["Multiple Wounds"][1].get()):
+                    dmg += randint(1, rules[attacker]["Multiple Wounds"][2].get())
+                wounds += min(dmg, stats[not attacker]["W"].get())
+            else:
+                wounds += 1
+            if debug:
+                print wounds
+    #TODO make predation more elegant?
+    #-----------------PREDATION--------------------------
     for i in range(pred):
         r = calcRerolls(attacker, cstats, "To-Hit")
         if r < cstats[attacker]["To-Hit"]:
@@ -583,7 +594,16 @@ def attack(attacker, attacks, cstats, rules):
         if r < cstats[not attacker]["Ward"]:
             if debug:
                 print "WOUND"
-            wounds += 1
+            if rules[attacker]["Multiple Wounds"][0].get():
+                dmg = 0
+                for i in range(rules[attacker]["Multiple Wounds"][1].get()):
+                    dmg += randint(1, rules[attacker]["Multiple Wounds"][2].get())
+                wounds += min(dmg, stats[not attacker]["W"].get())
+            else:
+                wounds += 1
+            if debug:
+                print wounds
+    #-----------------PREDATION--------------------------
     
         
     return wounds
