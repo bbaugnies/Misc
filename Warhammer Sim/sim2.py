@@ -271,8 +271,7 @@ def getStats(turn):
     twp= (rules[0]["To-Wound Penalty"], rules[1]["To-Wound Penalty"])
     weap = (weapons[0].get(), weapons[1].get())
     
-    for i in range(2):
-    
+    for i in range(2):    
         if weap[i]== "Great Weapon":
             strength[i]+=2
             rules[i]["Always Strikes Last"].set(True)
@@ -283,6 +282,8 @@ def getStats(turn):
             elif weap[i] == "Flail" or (weap[i] == "Lance" and rules[i]["Has Charged"].get()):
                 strength[i]+=2
                 
+                
+    # Done after weapons, because STR bonus affects armor
     for i in range(2):
         if rules[not i]["Fear"][0].get() and not rules[i]["Immune Psychology"].get():
             if not fearTest(rules[not i]["Fear"][1].get(), i):
@@ -454,9 +455,6 @@ def getAttacks(unit, losses):
     randApm = 0
     if weapons[unit].get()=="Two Weapons":      apm+=1
     if rules[unit]["Extra Attack"][0].get():    apm+=rules[unit]["Extra Attack"][1].get()
-    #TODO make random attacks actually roll
-    if rules[unit]["Random Attacks"][0].get():
-        apm += (1+rules[unit]["Random Attacks"][2].get())/2*rules[unit]["Random Attacks"][1].get()
     if rules[unit]["Devastating Charge"].get() and rules[unit]["Has Charged"].get():    apm+=1
         
     available = int(num[unit][0]) - losses
@@ -465,7 +463,7 @@ def getAttacks(unit, losses):
     
     #current fronts of both units
     r = [min(available, int(num[unit][1])), min(av_enemy, int(num[not unit][1]))]
-    width = [int(baseSizes[unit].                                                                                                               get()[:-2]), int(baseSizes[not unit].get()[:-2])]
+    width = [int(baseSizes[unit].get()[:-2]), int(baseSizes[not unit].get()[:-2])]
     #front in mm
     r= [r[0]*width[0], r[1]*width[1]]
     availableWidth = min(r)
@@ -474,6 +472,10 @@ def getAttacks(unit, losses):
     
     firstRank=min(available, int(num[unit][1]), widthConstraint)
     attacks = firstRank*(apm)
+    if rules[unit]["Random Attacks"][0].get():
+        for i in range(firstRank):
+            for j in range(rules[unit]["Random Attacks"][1].get()):
+                attacks += randint(1, rules[unit]["Random Attacks"][2].get())
     available-=int(num[unit][1])
     supportRanks = 1
     if int(num[unit][1])>=10 and not rules[unit]["Monstrous Support"].get(): supportRanks+=1
@@ -483,8 +485,13 @@ def getAttacks(unit, losses):
         supportRanks += rules[unit]["Fight in Extra Ranks"][1].get()
     while supportRanks > 0 and available > 0:
         rankAttacks = min(available, int(num[unit][1]), widthConstraint)
-        if rules[unit]["Monstrous Support"].get():
+        if rules[unit]["Monstrous Support"].get():            
             attacks += min(rankAttacks * apm, rankAttacks * 3)
+            if rules[unit]["Random Attacks"][0].get():
+                for i in range(rankAttacks):
+                    for j in range(rules[unit]["Random Attacks"][1].get()):
+                        attacks += min(3-apm, randint(1, rules[unit]["Random Attacks"][2].get()))
+            
         else:
             attacks += rankAttacks
         available -= int(num[unit][1])
