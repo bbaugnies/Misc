@@ -49,8 +49,9 @@ function runBot(msg) {
         api.listen((err, message) => {
             if (err) {
 		    api.sendMessage("So... Cold...", ben);
-		    process.exit();
-		    console.log(err);
+		    setTimeout(function(){
+                        process.exit();
+                    }, 2000);
 	    }
             else {
 	            m = message.body.match(regex)
