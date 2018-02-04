@@ -47,7 +47,11 @@ function runBot(msg) {
         }
         
         api.listen((err, message) => {
-            if (err) { console.log(err); }
+            if (err) {
+		    api.sendMessage("So... Cold...", ben);
+		    process.exit();
+		    console.log(err);
+	    }
             else {
 	            m = message.body.match(regex)
 	            if (m != null) {
