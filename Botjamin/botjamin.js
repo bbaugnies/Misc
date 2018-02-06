@@ -97,10 +97,9 @@ function runBot(msg) {
 	            else if (message.body.match(/💩/)) {
 		            api.sendMessage('💩', message.threadID);
 	            }
-                    else if (message.body.match(/[Pp]etite?/)) {{
+                    else if (message.body.match(/[Pp]etite?/)) {
                             api.sendMessage('CTB', message.threadID);
                     }
-
 	            
 	            else if (message.body.match(/^\/getTop/) && message.threadID == ben) {
 	                api.sendMessage(override.toString(), ben);
