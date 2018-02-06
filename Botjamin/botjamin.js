@@ -3,7 +3,7 @@ var fs = require("fs");
 //var regex = /^\/[rR](oll)?(\d+)d(\d+)( ?[+-]\d+)?(.*)/
 var regex = /^\/[rR](oll)? ?(\d+)d(\d+)/
 
-var debug = false
+var debug = true
 var override = false
 
 var pwd = fs.readFileSync("./pwd.txt", "utf8")
@@ -97,6 +97,10 @@ function runBot(msg) {
 	            else if (message.body.match(/💩/)) {
 		            api.sendMessage('💩', message.threadID);
 	            }
+                    else if (message.body.match(/[Pp]etite?/)) {{
+                            api.sendMessage('CTB', message.threadID);
+                    }
+
 	            
 	            else if (message.body.match(/^\/getTop/) && message.threadID == ben) {
 	                api.sendMessage(override.toString(), ben);
