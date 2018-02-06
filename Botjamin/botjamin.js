@@ -37,7 +37,6 @@ top = {
 function runBot(msg) {
     login({email: "botgnies@gmail.com", password: pwd}, (err, api) => {
         if(err) {
-            api.sendMessage("So... Cold...", ben);
             console.log(err);            
         }
         api.sendMessage(msg, ben);
@@ -48,10 +47,7 @@ function runBot(msg) {
         
         api.listen((err, message) => {
             if (err) {
-		    api.sendMessage("So... Cold...", ben);
-		    setTimeout(function(){
-                        process.exit();
-                    }, 2000);
+                    void(0);
 	    }
             else {
 	            m = message.body.match(regex)
