@@ -179,7 +179,7 @@ function runBot(msg) {
                         api.sendMessage('CTB', message.threadID);
                     }
                     else if (message.body.match(/(^| )[Dd]i([a-z]+)/)) {
-                        m = message.body.match(/(^| )[Dd]i([a-z]+)/)
+                        m = message.body.match(/(^| )[Dd]i([^ \p]*)/)
                         api.sendMessage(m[2], message.threadID);
                     }
                     else if (message.body.match(/\/stats/)) {
