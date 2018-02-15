@@ -178,10 +178,6 @@ function runBot(msg) {
                     else if (message.body.match(/[Pp]etite?/)) {
                         api.sendMessage('CTB', message.threadID);
                     }
-                    else if (message.body.match(/(^| )[Dd]i([a-z]+)/)) {
-                        m = message.body.match(/(^| )[Dd]i([^ \p]*)/)
-                        api.sendMessage(m[2], message.threadID);
-                    }
                     else if (message.body.match(/\/stats/)) {
                         r = "d6 rolls requested: " + stats[ids[message.senderID]]["rolls d6"] + "\n"
                         r += "Avg roll on d6: " + stats[ids[message.senderID]]["avg d6"]
