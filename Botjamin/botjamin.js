@@ -179,8 +179,16 @@ function runBot(msg) {
                         api.sendMessage('CTB', message.threadID);
                     }
                     else if (message.body.match(/\/stats/)) {
-                        r = "d6 rolls requested: " + stats[ids[message.senderID]]["rolls d6"] + "\n"
-                        r += "Avg roll on d6: " + stats[ids[message.senderID]]["avg d6"]
+                        m = message.body.match(/\/stats ([a-z]*)/)
+                        r = ""
+                        if (m && m[1] in stats) {
+                            r += "d6 rolls requested by " + m[1] + ": " + stats[m[1]]["rolls d6"] + "\n"
+                            r += "Avg roll on d6: " + stats[m[1]]["avg d6"]                        
+                        }
+                        else {
+                            r += "d6 rolls requested: " + stats[ids[message.senderID]]["rolls d6"] + "\n"
+                            r += "Avg roll on d6: " + stats[ids[message.senderID]]["avg d6"]
+                        }
                         api.sendMessage(r, message.threadID);
                     }
                     else if (message.body.match(/\/help/)) {
