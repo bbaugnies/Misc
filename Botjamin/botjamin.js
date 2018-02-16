@@ -32,27 +32,32 @@ stats = {
     coco:   {
                 "rolls d6": 0,
                 "avg d6": 0,
-                "total d6": 0
+                "total d6": 0,
+                "detail": [0, 0, 0, 0, 0, 0]
             },
     finf:   { 
                 "rolls d6": 0,
                 "avg d6": 0,
-                "total d6": 0
+                "total d6": 0,
+                "detail": [0, 0, 0, 0, 0, 0]
             },
     ben:    {
                 "rolls d6": 0,
                 "avg d6": 0,
-                "total d6": 0
+                "total d6": 0,
+                "detail": [0, 0, 0, 0, 0, 0]
             },
     gog:    {
                 "rolls d6": 0,
                 "avg d6": 0,
-                "total d6": 0
+                "total d6": 0,
+                "detail": [0, 0, 0, 0, 0, 0]
             },
     thomas: {
                 "rolls d6": 0,
                 "avg d6": 0,
-                "total d6": 0
+                "total d6": 0,
+                "detail": [0, 0, 0, 0, 0, 0]
             }
 }
 
@@ -70,6 +75,7 @@ function update_stats(n, values, sender) {
     stats[sender]["rolls d6"] += n
     for (i = 0; i < values.length; i ++) {
         stats[sender]["total d6"] += values[i]
+        stats[sender]["detail"][values[i]-1] += 1
     }
     stats[sender]["avg d6"] = stats[sender]["total d6"]/stats[sender]["rolls d6"]
 }
@@ -177,20 +183,25 @@ function runBot(msg) {
 	                }
                     else if (message.body.match(/[Pp]etite?/)) {
                         api.sendMessage('CTB', message.threadID);
-                    }
+                    }                    
                     else if (message.body.match(/\/stats/)) {
                         m = message.body.match(/\/stats ([a-z]*)/)
                         r = ""
+                        s = null
                         if (m && m[1] in stats) {
-                            r += "d6 rolls requested by " + m[1] + ": " + stats[m[1]]["rolls d6"] + "\n"
-                            r += "Avg roll on d6: " + stats[m[1]]["avg d6"]                        
+                                s = m[1]
                         }
                         else {
-                            r += "d6 rolls requested: " + stats[ids[message.senderID]]["rolls d6"] + "\n"
-                            r += "Avg roll on d6: " + stats[ids[message.senderID]]["avg d6"]
+                                s = ids[message.senderID]
+                        }
+                        r += "d6 rolls requested: " + stats[s]["rolls d6"] + "\n"
+                        r += "Avg roll on d6: " + stats[s]["avg d6"] + "\n"
+                        if (message.threadID == ben) {
+                            r += stats[s]["detail"].join(', ')
                         }
                         api.sendMessage(r, message.threadID);
                     }
+
                     else if (message.body.match(/\/help/)) {
                         r =  "/help - this message\n"
                         r += "/r[x]d[y] - roll [x] dice of size [y]\n"
