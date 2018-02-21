@@ -255,10 +255,10 @@ function runBot(msg) {
                         r += "              s - sum\n"
                         r += "              o[n] - counts the dice that rolled over [n]\n"
                         r += "              u[n] - counts the dice that rolled under [n]\n"
-                        r += "/stats - personal stats for d6 since last reboot"
+                        r += "/stats - personal stats for d6 since last reboot\n"
                         r += "/listunits - name of units available for sim\n"
                         r += "/sim [unit1] size1 rank1 [unit2] size2 rank2\n"
-                        r += "      - run a simulation
+                        r += "      - run a simulation"
                         api.sendMessage(r, message.threadID);
                     }
 	                
@@ -309,8 +309,6 @@ function runBot(msg) {
 	                            exec(command, function (error, stdout, stderr) {
 	                                res_text = stdout
 	                                api.sendMessage({body: res_text, attachment: fs.createReadStream("./foo.png")}, message.threadID);
-                                    }
-
 	                            });
 	                        }
 	                        else {
