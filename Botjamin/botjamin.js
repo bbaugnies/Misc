@@ -1,6 +1,7 @@
 const login = require("facebook-chat-api");
 var fs = require("fs");
-//var regex = /^\/[rR](oll)?(\d+)d(\d+)( ?[+-]\d+)?(.*)/
+var exec = require('child_process').exec, child;
+
 var regex = /^\/[rR](oll)? ?(\d+)d(\d+) ?([as]|[ou]\d+)?/
 
 var debug = true
@@ -68,6 +69,50 @@ top = {
     ben: null,
     gog: null,
     thomas: null
+}
+
+var prefix = '/home/ubuntu/git/Warhammer-8th-Simulator/'
+
+units = {
+    "Doomfire Warlocks": prefix + "Dark_Elves/Doomfire_Warlocks.whs",
+    "Dark Riders": prefix + "Dark_Elves/Dark_Riders.whs",
+    "Dark Riders-shield": prefix + "Dark_Elves/Dark_Riders-shield.whs",
+    "Cold One Knights": prefix + "Dark_Elves/Cold_One_Knights.whs",
+    "Dreadspears": prefix + "Dark_Elves/Dreadspears.whs",
+    "Bleakswords": prefix + "Dark_Elves/Bleakswords.whs",
+    "Executioners": prefix + "Dark_Elves/Executioners.whs",
+    "Sisters of Slaughter": prefix + "Dark_Elves/Sisters_of_Slaughter.whs",
+    "Corsairs": prefix + "Dark_Elves/Corsairs.whs",
+    "Black Guard": prefix + "Dark_Elves/Black_Guard.whs",
+    "Witch Elves": prefix + "Dark_Elves/Witch_Elves.whs",
+    "Cold One Knights-charge": prefix + "Dark_Elves/Cold_One_Knights-charge.whs",
+    "Dark Riders-shield-charge": prefix + "Dark_Elves/Dark_Riders-shield-charge.whs",
+    "Dark Riders-charge": prefix + "Dark_Elves/Dark_Riders-charge.whs",
+    
+    "Flesh Hounds": prefix + "Daemons_of_Chaos//Flesh_Hounds.whs",
+    "Bloodcrushers": prefix + "Daemons_of_Chaos//Bloodcrushers.whs",
+    "Bloodcrushers-charge": prefix + "Daemons_of_Chaos//Bloodcrushers-charge.whs",
+    "Beast of Nurgle": prefix + "Daemons_of_Chaos//Beast_of_Nurgle.whs",
+    "Bloodletters-charge": prefix + "Daemons_of_Chaos//Bloodletters-charge.whs",
+    "Bloodletters": prefix + "Daemons_of_Chaos//Bloodletters.whs",
+    "Plague Drone-proboscis": prefix + "Daemons_of_Chaos//Plague_Drone-proboscis.whs",
+    "Pink Horrors": prefix + "Daemons_of_Chaos//Pink_Horrors.whs",
+    "Flesh Hounds-charge": prefix + "Daemons_of_Chaos//Flesh_Hounds-charge.whs",
+    "Plaguebearers": prefix + "Daemons_of_Chaos//Plaguebearers.whs",
+    "Daemonettes": prefix + "Daemons_of_Chaos//Daemonettes.whs",
+    "Plague Drone": prefix + "Daemons_of_Chaos//Plague_Drone.whs",
+
+    "Hammerers":        prefix + "Dwarves/Hammerers.whs",
+    "Iron Breakers":    prefix + "Dwarves/Iron_Breakers.whs",
+    "Longbeards-gw":    prefix + "Dwarves/Longbeards-gw.whs",
+    
+    "Phoenix Guard":    prefix + "High_Elves/Phoenix_Guard.whs",
+    "Swordmasters":     prefix + "High_Elves/Swordmaster.whs",
+    "White Lions":      prefix + "Whites_Lions.whs",
+    
+    "Crypt Horrors":    prefix + 'Vampire_Counts/Crypt_Horrors.whs',
+    "Skelettons-shield":prefix + "Vampire_Counts/Skelettons-shield.whs",
+    "Skelettons-spear": prefix + "Vampire_Counts/Skelettons-speard.whs"    
 }
 
 
@@ -211,6 +256,9 @@ function runBot(msg) {
                         r += "              o[n] - counts the dice that rolled over [n]\n"
                         r += "              u[n] - counts the dice that rolled under [n]\n"
                         r += "/stats - personal stats for d6 since last reboot"
+                        r += "/listunits - name of units available for sim\n"
+                        r += "/sim [unit1] size1 rank1 [unit2] size2 rank2\n"
+                        r += "      - run a simulation
                         api.sendMessage(r, message.threadID);
                     }
 	                
@@ -250,6 +298,32 @@ function runBot(msg) {
 	                        }
                             api.sendMessage('Yes Sir !', message.threadID);	
 	                    }                
+	                }
+	                
+	                else if (message.body.match(/^\/[Ss]im/)) {
+	                    m = message.body.match(/^\/[Ss]im \[(.*)\] (\d+) (\d+) \[(.*)\] (\d+) (\d+)/)
+	                    if(m) {
+	                        if (m[1] in units && m[4] in units && m[3] < 11 && m[6] < 11 && m[2] < 51 && m[5] < 51) {
+	                            res_text = ''
+	                            command = 'python ' + prefix + 'sim.py --unit1 ' + units[m[1]] + ' --unit2 ' + units[m[4]] + ' --s1 ' + m[2] + ' --r1 ' + m[3]+' --s2 '+m[5]+' --r2 '+m[6]+' --iter 100'
+	                            exec(command, function (error, stdout, stderr) {
+	                                res_text = stdout
+	                                api.sendMessage({body: res_text, attachment: fs.createReadStream("./foo.png")}, message.threadID);
+                                    }
+
+	                            });
+	                        }
+	                        else {
+	                            api.sendMessage("Unit not found", message.threadID);
+	                        }
+	                    }	 
+	                                       
+	                }
+	                else if (message.body.match(/^\/[lL]ist[uU]nits/)) {
+	                    d = Object.keys(units).sort()
+	                    r = ''
+	                    for (i in d) { r += d[i] + "\n" }
+	                    api.sendMessage(r, message.threadID);
 	                }
 	                
 	                else if (message.body.match(/[gG]o to sleep Botjamin/) && message.senderID == ben) {
