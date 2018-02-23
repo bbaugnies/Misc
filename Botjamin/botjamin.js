@@ -287,11 +287,16 @@ function runBot(msg) {
                                     //console.log(stdout)
                                     //console.log(stderr)
                                     //if (error) { console.log(error) }
-	                                api.sendMessage({body: res_text, attachment: fs.createReadStream("./foo.png")}, message.threadID);
+                                    if (res_text != "") {
+	                                    api.sendMessage({body: res_text, attachment: fs.createReadStream("./foo.png")}, message.threadID);
+                                    }
+                                    else {
+	                                    api.sendMessage("Something went wrong", message.threadID);                                    
+                                    }   
 	                            });
 	                        }
 	                        else {
-	                            api.sendMessage("Unit not found", message.threadID);
+	                            api.sendMessage("Unit not found/unit size too large", message.threadID);
 	                        }
 	                    }	 
 	                                       
