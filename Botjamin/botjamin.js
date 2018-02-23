@@ -315,6 +315,15 @@ function runBot(msg) {
 	                    }
 	                    api.sendMessage(r, message.threadID);
 	                }
+	                else if (message.body.match(/^\/getunit/i)) {
+	                    m = message.body.match(/^\/getunit (.*)/i)
+	                    if (m && m[1] && m[1] in units) {
+	                        console.log(units[m[1]])
+	                        res = fs.readFileSync(units[m[1]], "utf8")
+	                        console.log(res)
+	                        api.sendMessage(res, message.threadID);
+	                    }
+	                }
 	                
 	                else if (message.body.match(/[gG]o to sleep Botjamin/) && message.senderID == ben) {
 		                api.sendMessage("OK! Good night!", message.threadID);
