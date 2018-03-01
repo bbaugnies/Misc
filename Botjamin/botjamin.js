@@ -75,7 +75,7 @@ top = {
 
 
 //get all the unit files
-var prefix = '/home/benjamin/git/Warhammer-8th-Simulator/'
+var prefix = '/home/ubuntu/git/Warhammer-8th-Simulator/'
 
 dirs = fs.readdirSync(prefix)
     .map(file => path.join(prefix, file))
