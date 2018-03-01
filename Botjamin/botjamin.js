@@ -4,7 +4,7 @@ const path = require("path");
 
 var exec = require('child_process').exec, child;
 
-var regex = /^\/[rR](oll)? ?(\d+)d(\d+) ?([as]|[ou]\d+)?/
+var regex = /([\s\S]*)\/[rR](oll)? ?(\d+)[dD](\d+) ?([as]|[ou]\d+)?/g
 
 var debug = true
 var override = false
@@ -148,38 +148,41 @@ function runBot(msg) {
                         void(0);
 	        }
                 else {
-	                m = message.body.match(regex)
-	                if (m != null) {
-		                n_dice = parseInt(m[2], 10)
-		                s_dice = parseInt(m[3], 10)
-                        if (n_dice > 100 || s_dice > 1000){
-                            api.sendMessage("Bad Human!", message.threadID);
-                        }
-                        else {
-                            res = []
-                            if (top[ids[message.senderID]] != null && override && m[2] == top[ids[message.senderID]][1] && m[3] == top[ids[message.senderID]][2]) {
-                                l = top[ids[message.senderID]][0].split(",")
-                                for (i = 0; i < l.length; i++) {
-                                    l[i] = parseInt(l[i])
-                                }
-                                top[ids[message.senderID]] = top[ids[message.senderID]][3]
-                                res = l
+                    if (message.body.match(regex)) {
+                        r = ""
+	                    while (m = regex.exec(message.body)){
+	                        r += m[1]
+		                    n_dice = parseInt(m[3], 10)
+		                    s_dice = parseInt(m[4], 10)
+                            if (n_dice > 100 || s_dice > 1000){
+                                r += "Bad Human!\n"
                             }
                             else {
-                                for (i = 0; i < n_dice; i++) {
-	                                res.push(Math.floor((Math.random() * s_dice) + 1))
-         	                    }
-	                            
-                            }
-                            if (s_dice == 6) {
-                                update_stats(n_dice, res, ids[message.senderID])
-                            }
-                            r = "[" + res.join(", ") + "]"
-                            if (m[4]) {
-                                r+= "\n\n" + process(res, m[4])
+                                res = []
+                                if (top[ids[message.senderID]] != null && override && m[3] == top[ids[message.senderID]][1] && m[4] == top[ids[message.senderID]][2]) {
+                                    l = top[ids[message.senderID]][0].split(",")
+                                    for (i = 0; i < l.length; i++) {
+                                        l[i] = parseInt(l[i])
+                                    }
+                                    top[ids[message.senderID]] = top[ids[message.senderID]][3]
+                                    res = l
+                                }
+                                else {
+                                    for (i = 0; i < n_dice; i++) {
+	                                    res.push(Math.floor((Math.random() * s_dice) + 1))
+             	                    }
+	                                
+                                }
+                                if (s_dice == 6) {
+                                    update_stats(n_dice, res, ids[message.senderID])
+                                }
+                                r += "[" + res.join(", ") + "]"
+                                if (m[5]) {
+                                    r+= "\n\n" + process(res, m[5])
+                                }                                
                             }
                             api.sendMessage(r, message.threadID);
-                        }
+	                    }
 	                }
 	                else if (message.body.match(/^[gG]ood bot/)) {
 		                api.sendMessage("Thank you, human "+ message.senderID, message.threadID);
