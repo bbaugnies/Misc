@@ -4,7 +4,7 @@ const path = require("path");
 
 var exec = require('child_process').exec, child;
 
-var regex = /([\s\S]*)\/[rR](oll)? ?(\d+)[dD](\d+) ?([as]|[ou]\d+)?/g
+var regex = /([\s\S]*?)\/[rR](oll)? ?(\d+)[dD](\d+) ?([as]|[ou]\d+)?/g
 
 var debug = true
 var override = false
@@ -75,7 +75,7 @@ top = {
 
 
 //get all the unit files
-var prefix = '/home/ubuntu/git/Warhammer-8th-Simulator/'
+var prefix = '/home/benjamin/git/Warhammer-8th-Simulator/'
 
 dirs = fs.readdirSync(prefix)
     .map(file => path.join(prefix, file))
@@ -180,9 +180,9 @@ function runBot(msg) {
                                 if (m[5]) {
                                     r+= "\n\n" + process(res, m[5])
                                 }                                
-                            }
-                            api.sendMessage(r, message.threadID);
+                            }                            
 	                    }
+	                    api.sendMessage(r, message.threadID);
 	                }
 	                else if (message.body.match(/^[gG]ood bot/)) {
 		                api.sendMessage("Thank you, human "+ message.senderID, message.threadID);
