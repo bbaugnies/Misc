@@ -75,7 +75,7 @@ top = {
 
 
 //get all the unit files
-var prefix = '/home/ubuntu/git/Warhammer-8th-Simulator/'
+var prefix = '/home/benjamin/git/Warhammer-8th-Simulator/'
 
 dirs = fs.readdirSync(prefix)
     .map(file => path.join(prefix, file))
@@ -208,8 +208,8 @@ function runBot(msg) {
                     else if (message.body.match(/[Pp]etite?/)) {
                         api.sendMessage('CTB', message.threadID);
                     }                    
-                    else if (message.body.match(/\/stats/)) {
-                        m = message.body.match(/\/stats ([a-z]*)/)
+                    else if (message.body.match(/\/stats/i)) {
+                        m = message.body.match(/\/stats ([a-z]*)/i)
                         r = ""
                         s = null
                         if (m && m[1] in stats) {
@@ -220,10 +220,16 @@ function runBot(msg) {
                         }
                         r += "d6 rolls requested: " + stats[s]["rolls d6"] + "\n"
                         r += "Avg roll on d6: " + stats[s]["avg d6"] + "\n"
-                        if (message.threadID == ben) {
-                            r += stats[s]["detail"].join(', ')
-                        }
+                        r += stats[s]["detail"].join(', ')
                         api.sendMessage(r, message.threadID);
+                    }
+                    else if (message.body.match(/\/resetstats/i)) {
+                        stats[ids[message.senderID]] = {
+                                                            "rolls d6": 0,
+                                                            "avg d6": 0,
+                                                            "total d6": 0,
+                                                            "detail": [0, 0, 0, 0, 0, 0]
+                                                        }
                     }
 
                     else if (message.body.match(/\/help/)) {
@@ -343,5 +349,14 @@ function runBot(msg) {
         }
     }); // end login
 }
-
+    
+exec('cd /home/benjamin/git/Warhammer-8th-Simulator && git pull',
+    function (error, stdout, stderr) {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+             console.log('exec error: ' + error);
+        }
+    });
+    
 runBot("Hello, humans!");
