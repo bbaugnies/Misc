@@ -75,7 +75,7 @@ top = {
 
 
 //get all the unit files
-var prefix = '/home/benjamin/git/Warhammer-8th-Simulator/'
+var prefix = '/home/ubuntu/git/Warhammer-8th-Simulator/'
 
 dirs = fs.readdirSync(prefix)
     .map(file => path.join(prefix, file))
@@ -350,7 +350,7 @@ function runBot(msg) {
     }); // end login
 }
     
-exec('cd /home/benjamin/git/Warhammer-8th-Simulator && git pull',
+exec('cd /home/ubuntu/git/Warhammer-8th-Simulator && git pull',
     function (error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
