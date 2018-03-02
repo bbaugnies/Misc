@@ -1,6 +1,7 @@
 const login = require("facebook-chat-api");
 const fs = require("fs");
 const path = require("path");
+const os = require("os");
 
 var exec = require('child_process').exec, child;
 
@@ -75,7 +76,7 @@ top = {
 
 
 //get all the unit files
-var prefix = '/home/ubuntu/git/Warhammer-8th-Simulator/'
+var prefix = path.join(os.homedir(), 'git/Warhammer-8th-Simulator/')
 
 dirs = fs.readdirSync(prefix)
     .map(file => path.join(prefix, file))
@@ -350,7 +351,8 @@ function runBot(msg) {
     }); // end login
 }
     
-exec('cd /home/ubuntu/git/Warhammer-8th-Simulator && git pull',
+command = 'cd ' + prefix + '&& git pull'
+exec(command,
     function (error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
