@@ -289,7 +289,7 @@ function runBot(msg) {
 	                else if (message.body.match(/^\/[Ss]im/)) {
 	                    m = message.body.match(/^\/[Ss]im \[(.*)\] (\d+) (\d+) \[(.*)\] (\d+) (\d+)/)
 	                    if(m) {
-	                        if (m[1] in units && m[4] in units && m[3] < 11 && m[6] < 11 && m[2] < 51 && m[5] < 51) {
+	                        if (m[1] in units && m[4] in units && m[3] < 11 && m[6] < 11 && m[2] < 101 && m[5] < 101) {
 	                            res_text = ''
 	                            command = 'python ' + prefix + 'sim.py --unit1 ' + units[m[1]] + ' --unit2 ' + units[m[4]] + ' --s1 ' + m[2] + ' --r1 ' + m[3]+' --s2 '+m[5]+' --r2 '+m[6]+' --iter 100'
 	                            exec(command, function (error, stdout, stderr) {
