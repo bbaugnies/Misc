@@ -77,17 +77,19 @@ top = {
 
 //get all the unit files
 var prefix = path.join(os.homedir(), 'git/Warhammer-8th-Simulator/')
+var units = {}
 
-dirs = fs.readdirSync(prefix)
-    .map(file => path.join(prefix, file))
-    .filter(path => fs.statSync(path).isDirectory())
-    .filter(path => ! path.match(/\/\./))
-    
-units  = {}
-for (d in dirs) {
-    unitlist = fs.readdirSync(dirs[d])
-    for (u in unitlist) {
-        units[unitlist[u].replace(".whs", "").replace(/_/g, " ")] = path.join(dirs[d], unitlist[u])
+function updateUnits() {
+    dirs = fs.readdirSync(prefix)
+        .map(file => path.join(prefix, file))
+        .filter(path => fs.statSync(path).isDirectory())
+        .filter(path => ! path.match(/\/\./))
+        
+    for (d in dirs) {
+        unitlist = fs.readdirSync(dirs[d])
+        for (u in unitlist) {
+            units[unitlist[u].replace(".whs", "").replace(/_/g, " ")] = path.join(dirs[d], unitlist[u])
+        }
     }
 }
 
@@ -185,19 +187,19 @@ function runBot(msg) {
 	                    }
 	                    api.sendMessage(r, message.threadID);
 	                }
-	                else if (message.body.match(/^[gG]ood bot/)) {
+	                else if (message.body.match(/^good bot/i)) {
 		                api.sendMessage("Thank you, human "+ message.senderID, message.threadID);
 	                }
-	                else if (message.body.match(/\/niquetamere/)) {
+	                else if (message.body.match(/\/niquetamere/i)) {
 		                api.sendMessage("Ma maman est un taille crayon electrique", message.threadID);
 	                }
-	                else if (message.body.match(/[hH]ello,? [bB]ot/)) {
+	                else if (message.body.match(/hello,? bot/i)) {
 		                api.sendMessage("Hello, human " + message.senderID, message.threadID);
 	                }
-	                else if (message.body.match(/[tT]hank( you|s),? [bB]ot/)) {
+	                else if (message.body.match(/thank( you|s),? bot/i)) {
 		                api.sendMessage("You are welcome, human " + message.senderID, message.threadID);
 	                }
-	                else if (message.body.match(/[yY]ou there,? [bB]ot\?/)) {
+	                else if (message.body.match(/you there,? bot\?/i)) {
 		                api.sendMessage("Yes, human", message.threadID);
 	                }
 	                else if (message.body.match(/🚀/)) {
@@ -206,7 +208,7 @@ function runBot(msg) {
 	                else if (message.body.match(/💩/)) {
 		                api.sendMessage('💩', message.threadID);
 	                }
-                    else if (message.body.match(/[Pp]etite?/)) {
+                    else if (message.body.match(/petite?/i)) {
                         api.sendMessage('CTB', message.threadID);
                     }                    
                     else if (message.body.match(/\/stats/i)) {
@@ -233,7 +235,7 @@ function runBot(msg) {
                                                         }
                     }
 
-                    else if (message.body.match(/\/help/)) {
+                    else if (message.body.match(/\/help/i)) {
                         r =  "/help - this message\n"
                         r += "/r[x]d[y] - roll [x] dice of size [y]\n"
                         r += "      options:\n"
@@ -286,8 +288,8 @@ function runBot(msg) {
 	                    }                
 	                }
 	                
-	                else if (message.body.match(/^\/[Ss]im/)) {
-	                    m = message.body.match(/^\/[Ss]im \[(.*)\] (\d+) (\d+) \[(.*)\] (\d+) (\d+)/)
+	                else if (message.body.match(/^\/sim/i)) {
+	                    m = message.body.match(/^\/sim \[(.*)\] (\d+) (\d+) \[(.*)\] (\d+) (\d+)/i)
 	                    if(m) {
 	                        if (m[1] in units && m[4] in units && m[3] < 11 && m[6] < 11 && m[2] < 101 && m[5] < 101) {
 	                            res_text = ''
@@ -311,8 +313,9 @@ function runBot(msg) {
 	                    }	 
 	                                       
 	                }
-	                else if (message.body.match(/^\/[lL]ist[uU]nits/)) {
-	                    m = message.body.match(/^\/[lL]ist[uU]nits ?(.*)/)
+	                else if (message.body.match(/^\/listunits/i)) {
+	                    updateUnits()
+	                    m = message.body.match(/^\/listunits ?(.*)/i)
 	                    d = Object.keys(units).sort()
 	                    r = ''
 	                    for (i in d) {
@@ -335,7 +338,7 @@ function runBot(msg) {
 	                    }
 	                }
 	                
-	                else if (message.body.match(/[gG]o to sleep Botjamin/) && message.senderID == ben) {
+	                else if (message.body.match(/go to sleep Botjamin/i) && message.senderID == ben) {
 		                api.sendMessage("OK! Good night!", message.threadID);
 		                setTimeout(function(){
                             process.exit();
@@ -361,4 +364,5 @@ exec(command,
         }
     });
     
+updateUnits()
 runBot("Hello, humans!");
