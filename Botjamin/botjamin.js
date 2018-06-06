@@ -2,6 +2,8 @@ const login = require("facebook-chat-api");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
+const unirest = require("unirest");
+const request = require("request");
 
 var exec = require('child_process').exec, child;
 
@@ -93,6 +95,11 @@ function updateUnits() {
     }
 }
 
+var download = function(uri, filename, callback){
+  request.head(uri, function(err, res, body){
+    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+  });
+};
 
 
 function update_stats(n, values, sender) {
@@ -344,6 +351,22 @@ function runBot(msg) {
 		                setTimeout(function(){
                             process.exit();
                         }, 2000);
+	                }
+	                
+	                else if (message.body.match(/po+u+e+t/i)) {
+	                    unirest.get('http://thecatapi.com/api/images/get?type=gif&format=xml')
+                        .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
+                        .send()
+                        .end(function (response) {
+                            img = response.body.match(/<url>(.*)<\/url/)[1]
+                            download(img, 'cat.gif', function(){
+                                var msg = {
+                                    body: "Are you bored human? Here is a cat GIF:",
+                                    attachment: fs.createReadStream('cat.gif')
+                                };
+                                api.sendMessage(msg, message.threadID)
+                            });
+                        });  
 	                }
                 } // end else (not err)
             }); //en api. listen
