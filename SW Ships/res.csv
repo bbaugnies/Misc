@@ -1,0 +1,84 @@
+Name, Silhouette, Speed, Handling, Crew, Encumbrance, Passengers, Cost, Hard Points, Weapons, Fore, Port, Starboard, Aft, Armor, Hull, System Strain, Notes, Link
+J-Type Diplomatic Barge, 5, 4, 1, 5, 180, 10, 1000000, 0 , 0 , 2, 1, 1, 2, 3, 36, 18, Built to Impress: All J-type diplomatic barges count as having a Luxury Passenger Compartments attachment installed at no additional cost.  This attachment cannot be removed and does not count against the vehicle&#39s total hard points., http://swrpg.viluppo.net/transportation/starships/2138/
+IR-3F-Class Light Frigate, 5, 4, -1, 20, 1800, 10, 1000000, 2 , 4 , 2, 2, 2, 2, 3, 40, 35, -, http://swrpg.viluppo.net/transportation/starships/2570/
+Curich-Class Shuttle, 5, 3, 0, 3, 300, 50, 130000, 2 , 1 , 1, 1, 1, 1, 3, 38, 18, -, http://swrpg.viluppo.net/transportation/starships/2137/
+Savrip, 5, 3, 0, 120, 175, 40, 0, 0 , 11 , 1, 1, 1, 1, 5, 62, 35, -, http://swrpg.viluppo.net/transportation/starships/2412/
+Flatline and Brilliance, 5, 3, -1, 20, 10000, 5, 300000, 4 , 3 , 3, 2, 2, 2, 2, 40, 20, -, http://swrpg.viluppo.net/transportation/starships/2408/
+Barrage Gunship, 5, 3, -1, 7, 90, 5, 145000, 3 , 6 , 1, 1, 1, 1, 3, 18, 25, Interior Ordnance, http://swrpg.viluppo.net/transportation/starships/2833/
+Penumbra Stealth Freighter, 5, 3, -1, 3, 90, 4, 100000, 0 , 1 , 1, 1, 1, 1, 2, 19, 12, Fragile Stealth Systems, http://swrpg.viluppo.net/transportation/starships/2834/
+Wayfarer-Class Medium Freighter, 5, 3, -2, 10, 850, 6, 120000, 5 , 1 , 1, 1, 1, 2, 4, 32, 20, , http://swrpg.viluppo.net/transportation/starships/442/
+CSS-1 Corellian Star Shuttle, 5, 3, -2, 8, 1000, 200, 325000, 4 , 0 , 2, 2, 2, 1, 4, 30, 22, Primary Hyperdrive: Class 1.5, http://swrpg.viluppo.net/transportation/starships/483/
+The Diligent, 5, 3, -2, 4, 180, 8, 125000, 3 , 4 , 2, 1, 1, 1, 4, 34, 22, -, http://swrpg.viluppo.net/transportation/starships/491/
+PB-950 Patrol Boat, 5, 3, -2, 4, 150, 8, 150000, 3 , 4 , 2, 1, 1, 1, 4, 34, 22, , http://swrpg.viluppo.net/transportation/starships/484/
+Y164 Slave Transport, 5, 3, -2, 15, 120, 1200, 245000, 3 , 2 , 1, 1, 1, 1, 4, 35, 20, -, http://swrpg.viluppo.net/transportation/starships/1827/
+Starwind Pleasure Yacht, 5, 3, -2, 5, 85, 10, 210000, 2 , 2 , 2, 1, 1, 1, 3, 25, 20, , http://swrpg.viluppo.net/transportation/starships/441/
+C-ROC Gozanti-class Light Cruiser, 5, 3, -3, 12, 1800, 20, 190000, 6 , 6 , 3, 2, 2, 1, 5, 55, 40, -, http://swrpg.viluppo.net/transportation/starships/3484/
+VCX-100 Light Freighter, 5, 3, -3, 6, 200, 6, 155000, 5 , 3 , 1, 1, 1, 1, 3, 32, 28, -, http://swrpg.viluppo.net/transportation/starships/2835/
+Suwantek TL-1200 Transport, 5, 3, -3, 6, 600, 8, 170000, 4 , 2 , 1, 1, 1, 1, 3, 26, 15, Up to 100 passengers in the cargo holds.  , http://swrpg.viluppo.net/transportation/starships/1828/
+GR-75 Medium Transport, 5, 3, -3, 7, 1000, 100, 180000, 2 , 0 , 1, 1, 1, 1, 3, 20, 18, , http://swrpg.viluppo.net/transportation/starships/438/
+HT-2200 Medium Freighter, 5, 2, -2, 4, 800, 8, 140000, 5 , 2 , 1, 1, 1, 0, 5, 35, 14, , http://swrpg.viluppo.net/transportation/starships/1480/
+Action IV Bulk Freighter, 5, 2, -2, 26, 8500, 6, 150000, 4 , 2 , 1, 1, 1, 0, 2, 35, 18, -, http://swrpg.viluppo.net/transportation/starships/3351/
+Blockade Bandit, 5, 2, -2, 40, 750, 50, 700000, 2 , 6 , 2, 1, 1, 2, 5, 50, 15, Junker Starship, http://swrpg.viluppo.net/transportation/starships/454/
+ND-47 Stalwart Bulk Freighter, 5, 2, -2, 4, 200, 10, 70000, 2 , 0 , 2, 2, 2, 2, 5, 35, 15, -, http://swrpg.viluppo.net/transportation/starships/2832/
+ISO-One, 5, 2, -3, 15, 1000, 25, 150000, 5 , 4 , 2, 1, 1, 1, 2, 40, 25, , http://swrpg.viluppo.net/transportation/starships/456/
+Gozanti-Class Armed Transport, 5, 2, -3, 12, 1000, 12, 200000, 4 , 7 , 2, 2, 2, 1, 5, 50, 36, , http://swrpg.viluppo.net/transportation/starships/1242/
+Action VI Bulk Transport, 5, 2, -3, 20, 10000, 5, 200000, 4 , 0 , 2, 1, 1, 1, 2, 40, 20, , http://swrpg.viluppo.net/transportation/starships/436/
+Xiytiar-Class Heavy Transport, 5, 2, -3, 10, 2000, 12, 200000, 4 , 0 , 1, 1, 1, 1, 2, 35, 20, , http://swrpg.viluppo.net/transportation/starships/471/
+YZ-775 Medium Transport, 5, 2, -3, 8, 850, 0, 500000, 2 , 5 , 1, 1, 1, 1, 4, 34, 25, , http://swrpg.viluppo.net/transportation/starships/463/
+Space Master Medium Transport, 5, 2, -4, 9, 800, 0, 150000, 2 , 2 , 1, 1, 1, 1, 2, 25, 25, , http://swrpg.viluppo.net/transportation/starships/440/
+Mobquet Medium Transport, 5, 1, -4, 4, 5000, 90, 275000, 5 , 2 , 1, 1, 1, 1, 3, 40, 28, -, http://swrpg.viluppo.net/transportation/starships/1842/
+CEC HWK-1000 Light Freighter, 4, 5, 1, 2, 100, 4, 120000, 5 , 0 , 1, -, -, 1, 3, 18, 15, -, http://swrpg.viluppo.net/transportation/starships/1831/
+Agressor Assault Fighter, 4, 5, -1, 2, 20, 8, 160000, 3 , 3 , 2, -, -, 1, 2, 25, 15, Safety Limiters: As a maneuver shut off safety limiters to change Handling to +3 but any piloting maneuver causes all characters aboard to suffer 3 strain droids and possibly (GM&#39s discretion) characters with 4+ cybernetic enhancements suffer only 1 strain, http://swrpg.viluppo.net/transportation/starships/3477/
+Lancer-class Pursuit Craft, 4, 5, -2, 2, 60, 4, 120000, 3 , 3 , 1, -, -, 0, 2, 20, 10, -, http://swrpg.viluppo.net/transportation/starships/3482/
+Baudo-Class Star Yacht, 4, 4, 1, 2, 60, 8, 250000, 6 , 1 , 1, -, -, 1, 1, 26, 10, -, http://swrpg.viluppo.net/transportation/starships/2136/
+Baudo-class Star Yacht, 4, 4, 1, 2, 60, 8, 250000, 6 , 1 , 1, -, -, 1, 1, 26, 10, , http://swrpg.viluppo.net/transportation/starships/1841/
+YT-1760 Small Transport, 4, 4, 1, 2, 70, 8, 80000, 5 , 1 , 1, -, -, 0, 1, 17, 15, , http://swrpg.viluppo.net/transportation/starships/1483/
+Luxurious-class Yacht, 4, 4, 1, 3, 80, 12, 210000, 4 , 0 , 1, -, -, 1, 1, 25, 22, -, http://swrpg.viluppo.net/transportation/starships/1484/
+Darvro-class Light Freighter, 4, 4, 0, 3, 120, 4, 250000, 4 , 3 , 1, -, -, 1, 2, 18, 14, Gimmellian Stealth Device Electronic Countermeasures Suite, http://swrpg.viluppo.net/transportation/starships/2292/
+Firespray-31 System Patrol Craft, 4, 4, 0, 3, 40, 6, 80000, 4 , 2 , 1, -, -, 1, 4, 15, 12, , http://swrpg.viluppo.net/transportation/starships/428/
+Sienar Fleet Systems Legate-Class Courier, 4, 4, 0, 2, 15, 4, 65000, 3 , 2 , 1, -, -, 1, 2, 18, 13, -, http://swrpg.viluppo.net/transportation/starships/3570/
+Incom A-36 Pathfinder-Class Force Reconnaissance Vessel, 4, 4, 0, 4, 40, 4, 135000, 2 , 3 , 1, -, -, 1, 3, 16, 16, -, http://swrpg.viluppo.net/transportation/starships/468/
+Regulator-Class Patrol Vessel, 4, 4, 0, 2, 18, 6, 110000, 2 , 2 , 2, -, -, 1, 3, 18, 14, -, http://swrpg.viluppo.net/transportation/starships/1479/
+CEC WUD-500 Star Yacht, 4, 4, -1, 2, 65, 6, 98500, 5 , 2 , 1, -, -, 1, 1, 18, 14, -, http://swrpg.viluppo.net/transportation/starships/1837/
+YT-1210 Light Freighter, 4, 4, -1, 2, 100, 4, 120000, 3 , 1 , 1, -, -, 1, 2, 20, 12, , http://swrpg.viluppo.net/transportation/starships/489/
+Bloodblade, 4, 4, -1, 3, 40, 6, 80000, 0 , 2 , 2, -, -, 1, 4, 18, 10, Pilot: Capitan Jostero, http://swrpg.viluppo.net/transportation/starships/492/
+J-Type Star Skiff, 4, 4, -1, 3, 90, 3, 260000, 0 , 2 , 2, -, -, 2, 4, 28, 18, Manufacturer incomplete per lore and , http://swrpg.viluppo.net/transportation/starships/486/
+The Venture, 4, 3, 2, 19, 50, 25, 185000, 3 , 3 , 1, -, -, 0, 3, 20, 20, -, http://swrpg.viluppo.net/transportation/starships/476/
+T-6 Shuttle, 4, 3, 1, 2, 80, 4, 100000, 2 , 0 , 1, -, -, 0, 3, 25, 15, , http://swrpg.viluppo.net/transportation/starships/3349/
+Nightflyer, 4, 3, 1, 1, 95, 6, 160000, 0 , 2 , 2, -, -, 1, 4, 25, 18, -, http://swrpg.viluppo.net/transportation/starships/452/
+YKL-37R Nova Courier, 4, 3, 0, 2, 100, 6, 130000, 5 , 4 , 1, -, -, 1, 3, 24, 18, -, http://swrpg.viluppo.net/transportation/starships/1839/
+YT-2000 Light Freighter, 4, 3, 0, 2, 170, 7, 120000, 5 , 2 , 1, -, -, 1, 3, 24, 14, -, http://swrpg.viluppo.net/transportation/starships/1832/
+YT-2400 Light Freighter, 4, 3, 0, 2, 140, 6, 130000, 5 , 2 , 1, -, -, 1, 4, 25, 18, , http://swrpg.viluppo.net/transportation/starships/444/
+Simiyiar Light Freighter, 4, 3, 0, 2, 90, 5, 165000, 4 , 2 , 1, -, -, 1, 4, 20, 16, -, http://swrpg.viluppo.net/transportation/starships/2567/
+YV-560 Light Freighter, 4, 3, 0, 2, 80, 5, 120000, 4 , 1 , 1, -, -, 1, 3, 20, 20, , http://swrpg.viluppo.net/transportation/starships/474/
+SoroSuub Luxury 3000 Space Yacht, 4, 3, 0, 2, 100, 10, 120000, 4 , 0 , 1, -, -, 1, 1, 30, 12, , http://swrpg.viluppo.net/transportation/starships/439/
+The Deep Dark, 4, 3, 0, 12, 50, 6, 120000, 3 , 2 , 1, -, -, 1, 4, 25, 18, -, http://swrpg.viluppo.net/transportation/starships/453/
+Kappa-Class Shuttle, 4, 3, 0, 4, 150, 40, 80000, 2 , 4 , 1, -, -, 1, 4, 28, 14, -, http://swrpg.viluppo.net/transportation/starships/2140/
+Kappa-Class Shuttle, 4, 3, 0, 4, 250, 40, 110000, 2 , 3 , 1, -, -, 1, 4, 28, 14, -, http://swrpg.viluppo.net/transportation/starships/2140/
+Lambda-Class T-4A Long Range Shuttle, 4, 3, 0, 6, 200, 20, 140000, 2 , 3 , 2, -, -, 1, 4, 25, 15, , http://swrpg.viluppo.net/transportation/starships/430/
+Cygnus Spaceworks Eta-Class Shuttle, 4, 3, 0, 2, 100, 10, 100000, 2 , 1 , 2, -, -, 1, 3, 17, 12, -, http://swrpg.viluppo.net/transportation/starships/3567/
+MC-18 Light Freighter, 4, 3, 0, 2, 150, 5, 140000, 2 , 1 , 2, -, -, 1, 3, 22, 16, Custom Construction: When acquiring an MC-18 light freighter choose one attachment that requires a single hard point and add it to the ship at no additional cost.  This attachment cannot be removed and does not count against the ship&#39s total hard points., http://swrpg.viluppo.net/transportation/starships/2139/
+YT-1300 Light Freighter, 4, 3, -1, 2, 165, 6, 100000, 6 , 2 , 1, -, -, 1, 3, 22, 15, , http://swrpg.viluppo.net/transportation/starships/443/
+TL-18B Medium Transport, 4, 3, -1, 3, 400, 4, 157000, 5 , 2 , 2, -, -, 0, 4, 22, 16, -, http://swrpg.viluppo.net/transportation/starships/3352/
+YT-1000 Light Freighter, 4, 3, -1, 2, 150, 4, 75000, 5 , 1 , 1, -, -, 1, 2, 20, 14, , http://swrpg.viluppo.net/transportation/starships/473/
+ILH-KK Citadel-Class Light Freighter, 4, 3, -1, 3, 95, 14, 200000, 4 , 5 , 2, -, -, 1, 4, 30, 16, , http://swrpg.viluppo.net/transportation/starships/437/
+4R3 Light Assault Transport, 4, 3, -1, 5, 80, 16, 300000, 4 , 5 , 2, -, -, 1, 3, 32, 19, -, http://swrpg.viluppo.net/transportation/starships/460/
+Loronar E-9 Explorer-Class Armed Long-Range Scout Vessel, 4, 3, -1, 4, 60, 4, 120000, 4 , 2 , 1, -, -, 1, 4, 25, 14, , http://swrpg.viluppo.net/transportation/starships/469/
+Ubrikkian Industries Seltiss-2 Caravel, 4, 3, -1, 8, 200, 12, 550000, 4 , 2 , 2, -, -, 2, 4, 30, 18, -, http://swrpg.viluppo.net/transportation/starships/1826/
+Starlight-class Light Freighter, 4, 3, -1, 2, 85, 6, 69995, 4 , 1 , 1, -, -, 1, 3, 20, 16, -, http://swrpg.viluppo.net/transportation/starships/1838/
+ZH-25 Questor Light Freighter, 4, 3, -1, 2, 100, 6, 115000, 4 , 1 , 1, -, -, 1, 3, 30, 20, -, http://swrpg.viluppo.net/transportation/starships/2568/
+YV-929 Light Freighter, 4, 3, -1, 4, 80, 6, 380000, 1 , 6 , 2, -, -, 1, 4, 23, 15, , http://swrpg.viluppo.net/transportation/starships/462/
+Sentinel-Class Landing Craft, 4, 3, -1, 4, 500, 54, 240000, 0 , 4 , 2, -, -, 2, 5, 25, 15, , http://swrpg.viluppo.net/transportation/starships/1239/
+YV-666, 4, 3, -2, 2, 200, 6, 132000, 6 , 2 , 2, -, -, 1, 3, 30, 12, -, http://swrpg.viluppo.net/transportation/starships/3483/
+CorelliSpace Gymsnor-4 Light Freighter, 4, 3, -2, 2, 160, 4, 95000, 5 , 1 , 1, -, -, 1, 3, 20, 18, Modular cockpit, http://swrpg.viluppo.net/transportation/starships/1844/
+Barloz-class Medium Freighter, 4, 3, -2, 2, 170, 4, 70000, 4 , 1 , 1, -, -, 1, 2, 26, 12, -, http://swrpg.viluppo.net/transportation/starships/2831/
+Ghtroc 720 Light Freighter, 4, 3, -2, 2, 200, 10, 112000, 4 , 1 , 1, -, -, 1, 5, 28, 15, , http://swrpg.viluppo.net/transportation/starships/470/
+Imperial Customs Frigate, 4, 3, -2, 12, 140, 10, 140000, 2 , 7 , 2, -, -, 1, 4, 28, 18, Encumbrance value assumes no passengers, http://swrpg.viluppo.net/transportation/starships/1835/
+CorelliSpace Gymsnor-3 Light Freighter, 4, 3, -3, 2, 160, 4, 80000, 4 , 1 , 1, -, -, 1, 1, 26, 14, Modular cockpit, http://swrpg.viluppo.net/transportation/starships/1843/
+VT-49 Decimator, 4, 3, -3, 4, 60, 6, 160000, 1 , 4 , 2, -, -, 2, 4, 30, 20, -, http://swrpg.viluppo.net/transportation/starships/1836/
+YT-1200 Light Freighter, 4, 2, -1, 2, 150, 6, 90000, 5 , 1 , 1, -, -, 1, 3, 19, 11, , http://swrpg.viluppo.net/transportation/starships/1482/
+GX1 Short Hauler, 4, 2, -2, 4, 200, 6, 85000, 5 , 1 , 1, -, -, 1, 2, 24, 15, -, http://swrpg.viluppo.net/transportation/starships/1840/
+G9 Rigger Light Freighter, 4, 2, -2, 2, 80, 6, 55000, 4 , 3 , 1, -, -, 1, 2, 25, 15, , http://swrpg.viluppo.net/transportation/starships/2566/
+YG-4210 Light Freighter, 4, 2, -2, 2, 120, 12, 85000, 4 , 1 , 2, -, -, 1, 3, 30, 10, , http://swrpg.viluppo.net/transportation/starships/472/
+Life Boat, 3, 3, -2, 1, 50, 25, 15000, 2 , 0 , 0, -, -, 0, 2, 12, 15, -, http://swrpg.viluppo.net/transportation/starships/1372/
+Consular-Class Cruiser's Salon Pod, 3, 2, -4, 1, 5, 10, 0, 0 , 0 , 0, -, -, 0, 1, 10, 4, Comes with a Consular-class light cruiser., http://swrpg.viluppo.net/transportation/starships/3354/

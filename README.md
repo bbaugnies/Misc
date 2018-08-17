@@ -9,3 +9,9 @@ Powershell script to search through a range of hq-builder.com lists looking for 
 
 ## Botjamin:
 NodeJS script to listen to Facebook messenger conversation and reply to certain messages. Mainly aimed at providing a dice roller.
+
+## SW Ships:
+For FFG's Starwars. Extracts ship information from swrpg.viluppo.net and puts it into csv format to sort and filter.
+
+## Egg-move:
+Searches for Smogon movesets and then checks the moves on PokemonDB to find th egg moves.

@@ -1,0 +1,390 @@
+Consular-Class Cruiser's Salon Pod
+	3 	2 	-4 	Salon Pod 	Corellian Engineering Corporation 	None 	1 	5 	10 	0 	0 	0 	0 	DoH:63
+Savrip
+	5 	3 	0 	Marauder 	Republic Sienar Systems 	Yes 	120 	175 	40 	(R) 0 	5 	0 	11 	MPQ:83
+Escape Pod
+	2 	3 	-1 	Escape Pod 	Faberstien-Lago 	None 	1 	10 	5 	5,000 	7 	1 	0 	DitW:14
+Selonian Coneship
+	3 	1 	-5 	Coneship 	Various Selonian Dens 	None 	2 	2 	0 	5,000 	7 	0 	0 	SoF:107
+Life Boat
+	3 	3 	-2 	Life Boat 	Faberstien-Lago 	Astromech Droid Socket 	1 	50 	25 	15,000 	7 	2 	0 	DitW:14
+Shuttle Pod
+	2 	4 	0 	ISP-6 	Cygnus Spaceworks 	None 	1 	8 	0 	(R) 15,000 	6 	1 	2 	DitW:20
+Koensayr AD-1S Moduilar Multi-role Starfighter
+	3 	3 	0 	AD-1S 	Koensayr Manufacturing 	None 	1 	10 	2 	25,000 	7 	8 	0 	SM:62
+Delta-6 System Defense Starfighter
+	3 	4 	+1 	Delta-6 	Kuat Systems Engineering 	None 	1 	8 	0 	30,000 	4 	2 	1 	F-CRB:258
+Cloakshape Fighter
+	3 	4 	0 	CloakShape 	Kuat Systems Engineering 	None 	1 	12 	0 	38,000 	4 	3 	2 	E-CRB:254
+Modified Cloakshape Starfighter
+	3 	4 	0 	CloakShape 	Kuat Systems Engineering 	None 	1 	12 	0 	38,000 	4 	0 	2 	SoF:144
+Cutlass-9 Patrol Fighter
+	3 	3 	0 	Cutlass 	SoroSuub Corporation 	Yes 	1 	12 	0 	40,000 	4 	3 	3 	MPQ:78
+Incom A-24 Sleuth-Class Scout Ship
+	3 	4 	+1 	Sleuth 	Incom Corporation 	Yes 	1 	20 	1 	45,000 	6 	3 	1 	EtU:59
+Vangaard Pathfinder Scout Ship
+	4 	4 	+1 	Pathfinder 	Vangaard Industries 	Yes 	2 	45 	2 	45,000 	6 	2 	1 	F-CRB:260
+HH-87 Starhopper Starfighter
+	3 	4 	+1 	HH-87 Starhopper 	MandalMotors 	Yes 	1 	6 	0 	50,000 	4 	2 	1 	LoNH:114
+TIE/LN Starfighter
+	3 	5 	+3 	TIE Series 	Sienar Fleet Systems 	None 	1 	4 	0 	(R) 50,000 	4 	0 	1 	A-BGR:43, A-CRB:270, OaA:44, E-BGA:26, E-CRB:257, BtR:78, F-CRB:261
+CL-1c Lancet Interceptor
+	3 	5 	+1 	CL-1c 	Corellian Engineering Corporation 	Yes 	1 	4 	1 	55,000 	5 	0 	1 	SoF:108
+G9 Rigger Light Freighter
+	4 	2 	-2 	Rigger-class 	Corellian Engineering Corporation 	Yes 	2 	80 	6 	55,000 	5 	4 	3 	F-CRB:262
+JM-5000 Jumpmaster Long Range Scout
+	4 	4 	+1 	JumpMaster 	Corellian Engineering Corporation 	Yes 	1 	30 	1 	55,000 	5 	2 	1 	OaA:71, E-CRB:256
+KSE Rho-1 Limulus-Class Courier
+	3 	4 	0 	Limulus-class 	Kuat Systems Engineering 	Yes 	2 	6 	1 	55,000 	8 	2 	1 	FiB:62
+MandalMotors M3-A Scyk Interceptor
+	3 	5 	+2 	M3-A Scyk 	MandalMotors 	Yes 	1 	4 	0 	55,000 	4 	2 	1 	LoNH:113
+R-41 Starchaser
+	3 	4 	0 	R-41 Starchaser 	Hoersch-Kessel Drive, Inc. 	Yes 	1 	6 	0 	55,000 	7 	2 	3 	SoT:55
+Z-95-AF4 Headhunter
+	3 	4 	+1 	Headhunter 	Incom/Subpro 	None 	1 	8 	0 	55,000 	4 	2 	2 	OaA:21, E-CRB:258, BtR:35*
+Blade-32 Superiority Fighter
+	3 	4 	-2 	Blade-32 	Tarrvin-on-Kallik 	Yes 	2 	10 	1 	60,000 	7 	1 	3 	KtP:60
+LAF-250 Starfighter
+	3 	4 	0 	LAF-250 	Corellian Engineering Corporation 	None 	1 	6 	0 	60,000 	4 	1 	1 	SoF:108
+V-19B Dart Personal Flyer
+	3 	4 	0 	V-19B Dart 	Slayn & Korpil 	Yes 	2 	30 	2 	60,000 	7 	1 	0 	DoH:60
+Kihraxz Light Starfighter
+	3 	4 	0 	Kihraxz 	TransGalMeg, Inc 	Yes 	1 	7 	0 	65,000 	6 	5 	3 	ND:60
+Sienar Fleet Systems Legate-Class Courier
+	4 	4 	0 	Legate-class 	Sienar Fleet Systems 	Yes 	2 	15 	4 	65,000 	6 	3 	2 	EV:63
+Starlight-class Light Freighter
+	4 	3 	-1 	Starlight-class 	Rendili StarDrive and Surron StarTech 	Yes 	2 	85 	6 	69,995 	5 	4 	1 	FC:56
+Alpha-3 Nimbus "V-Wing" Interceptor
+	3 	4 	+2 	A3-Nimbus 	Kuat Systems Engineering 	Astromech Droid Socket 	2 	5 	0 	70,000 	7 	2 	2 	SoT:57
+Barloz-class Medium Freighter
+	4 	3 	-2 	Barloz-class 	Corellian Engineering Corporation 	Yes 	2 	170 	4 	70,000 	5 	4 	1 	KtP:61
+HLAF-500 Starfighter
+	3 	4 	+1 	HLAF-500 	Corellian Engineering Corporation 	Yes 	1 	6 	0 	70,000 	5 	1 	1 	SoF:108
+HWK-290 Light Freighter
+	3 	4 	+1 	HWK-290 	Corellian Engineering Corporation 	Yes 	2 	75 	2 	70,000 	7 	5 	0 	FH:56, F-CRB:263
+ND-47 Stalwart Bulk Freighter
+	5 	2 	-2 	Stalwart-class 	Nova-Drive 	Yes 	4 	200 	10 	70,000 	6 	2 	0 	KtP:62
+PPB Pocket Patrol Boat
+	3 	4 	0 	PPB 	Corellian Engineering Corporation 	None 	2 	12 	0 	70,000 	5 	2 	1 	SoF:109
+TIE/AG "Aggressor" Starfighter
+	3 	4 	+1 	TIE-series 	Sienar Fleet Systems 	None 	2 	7 	0 	(R) 75,000 	9 	0 	2 	SoT:57
+TIE/IN Interceptor
+	3 	6 	+3 	TIE Series 	Sienar Fleet Systems 	None 	1 	4 	0 	(R) 75,000 	5 	0 	1 	A-BGR:43, A-CRB:270, OaA:43
+YT-1000 Light Freighter
+	4 	3 	-1 	YT-1000 	Corellian Engineering Corporation 	Yes 	2 	150 	4 	75,000 	5 	5 	1 	EtU:64
+Delta-7 Aethersprite Interceptor
+	3 	5 	+2 	Delta-7 	Kuat Systems Engineering 	Astromech Droid Socket 	2 	4 	0 	78,000 	6 	2 	1 	F-CRB:259
+A-7 Hunter Interceptor
+	3 	5 	+2 	A-series 	Kuat Drive Yards 	None 	1 	4 	0 	80,000 	6 	1 	1 	DC:65
+Bloodblade
+	4 	4 	-1 	Firespray 	Kuat Systems Engineering 	Yes 	3 	40 	6 	80,000 	4 	0 	2 	SoF:143*
+BTL-A4 Y-Wing Attack Starfighter
+	3 	4 	0 	BTL Y-Wing 	Koensayr Manufacturing 	Astromech Droid Socket 	1 	10 	0 	80,000 	4 	1 	3 	A-CRB:268, E-BGR:43, E-CRB:257, F-CRB:257
+BTL-S3 Y-Wing Attack Starfighter
+	3 	4 	0 	BTL Y-Wing 	Koensayr Manufacturing 	Astromech Droid Socket 	2 	10 	0 	80,000 	4 	1 	3 	A-CRB:268, E-CRB:257, F-CRB:257
+CorelliSpace Gymsnor-3 Light Freighter
+	4 	3 	-3 	Gymsnor-3 	CorelliSpace 	Yes 	2 	160 	4 	80,000 	6 	4 	1 	FC:58
+Firespray-31 System Patrol Craft
+	4 	4 	0 	Firespray 	Kuat Systems Engineering 	Yes 	3 	40 	6 	80,000 	4 	4 	2 	E-BGR:43*, E-CRB:255
+Kappa-Class Shuttle
+	4 	3 	0 	Kappa 	Sienar Fleet Systems 	Yes 	4 	150 	40 	(R) 80,000 	6 	2 	4 	DitW:20
+YT-1760 Small Transport
+	4 	4 	+1 	YT-1760 	Corellian Engineering Corporation 	Yes 	2 	70 	8 	80,000 	5 	5 	1 	FH:58
+Preybird-Class Starfighter
+	3 	4 	-1 	Preybird 	SoroSuub 	Yes 	2 	8 	0 	84,000 	8 	1 	3 	DC:66
+Delta-12 Skysprite
+	3 	4 	+1 	D-12 	Kuat Systems Engineering 	Astromech Droid Socket 	1 	8 	1 	85,000 	8 	3 	0 	F-CRB:259
+GX1 Short Hauler
+	4 	2 	-2 	GX1 Short Hauler 	Lantillian ShipWrights 	Yes 	4 	200 	6 	85,000 	5 	5 	1 	FC:56
+YG-4210 Light Freighter
+	4 	2 	-2 	YG-4210 	Corellian Engineering Corporation 	Yes 	2 	120 	12 	85,000 	7 	4 	1 	EtU:64
+Z-95-AF4-H "Heavy-95" Multi-role Starfighter
+	3 	4 	0 	Heavy-95 	Incom/SubPro 	Astromech Droid Socket 	2 	6 	0 	85,000 	5 	1 	2 	SoT:56
+A-Type Stiletto
+	3 	4 	0 	A-type Stiletto 	Nubia Star Drives, Inc. 	None 	1 	8 	0 	90,000 	7 	0 	2 	SoF:107
+YT-1200 Light Freighter
+	4 	2 	-1 	YT-1200 	Corellian Engineering Corporation 	Yes 	2 	150 	6 	90,000 	5 	5 	1 	FH:57
+CorelliSpace Gymsnor-4 Light Freighter
+	4 	3 	-2 	Gymsnor-4 	CorelliSpace 	Yes 	2 	160 	4 	95,000 	6 	5 	1 	FC:59
+R60 "T-Wing" Interceptor
+	3 	6 	-1 	R-60 T-wing 	Hoersch-Kessel Drive, Inc. 	Yes 	1 	5 	0 	95,000 	7 	1 	2 	SoT:56
+CEC WUD-500 Star Yacht
+	4 	4 	-1 	WUD-500 	Corellian Engineering Corporation 	Yes 	2 	65 	6 	98,500 	6 	5 	2 	FC:55
+Cygnus Spaceworks Eta-Class Shuttle
+	4 	3 	0 	Eta-class 	Cygnus Spaceworks 	Yes 	2 	100 	10 	100,000 	6 	2 	1 	EV:62
+Penumbra Stealth Freighter
+	5 	3 	-1 	Penumbra-class 	Brennkeyes Syndicate 	Yes 	3 	90 	4 	100,000 	9 	0 	1 	KtP:62
+T-6 Shuttle
+	4 	3 	+1 	T-6 	Slayn & Korpil 	Yes 	2 	80 	4 	100,000 	7 	2 	0 	DoH:60
+Tam Blackstar's TIE Hunter
+	3 	6 	+3 	TIE Series 	Sienar Fleet Systems 	Yes 	1 	4 	0 	(R) 100,000 	7 	0 	3 	OaA:42
+YT-1300 Light Freighter
+	4 	3 	-1 	YT-1300 	Corellian Engineering Corporation 	Yes 	2 	165 	6 	100,000 	4 	6 	2 	E-CRB:264
+Surronian Conqueror-Class Assault Ship
+	4 	3 	0 	Conqueror 	Surronian 	Yes 	3 	80 	1 	100,500 	9 	4 	2 	DC:67
+Kappa-Class Shuttle
+	4 	3 	0 	Kappa 	Republic Sienar Systems 	Yes 	4 	250 	40 	(R) 110,000 	5 	2 	3 	DA:63
+Modified TIE Bomber
+	3 	3 	-1 	TIE Series 	Sienar Fleet Systems 	None 	1 	10 	0 	(R) 110,000 	5 	2 	1 	OS:45
+Regulator-Class Patrol Vessel
+	4 	4 	0 	Regulator-class 	Sienar Fleet Systems 	None 	2 	18 	6 	110,000 	6 	2 	2 	FH:55
+TIE/SA Tactical Bomber
+	3 	4 	0 	TIE Series 	Sienar Fleet Systems 	None 	1 	10 	0 	(R) 110,000 	5 	0 	3 	A-CRB:272
+YG-4400 Light Freighter
+	4 	4 	-1 	YG-4400 	Corellian Engineering Corporation 	Yes 	2 	75 	2 	110,000 	5 	2 	1 	SoF:112
+Ghtroc 720 Light Freighter
+	4 	3 	-2 	720 	Ghtroc Industries 	Yes 	2 	200 	10 	112,000 	8 	4 	1 	EtU:62
+ZH-25 Questor Light Freighter
+	4 	3 	-1 	Questor 	Starfield Industries 	Yes 	2 	100 	6 	115,000 	6 	4 	1 	F-CRB:265
+CEC HWK-1000 Light Freighter
+	4 	5 	+1 	HWK-1000 	Corellian Engineering Corporation 	Yes 	2 	100 	4 	120,000 	10 	5 	0 	FC:59
+Lancer-class Pursuit Craft
+	4 	5 	-2 	Lancer-class 	MandalMotors 	Yes 	2 	60 	4 	120,000 	8 	3 	3 	ND:61
+Loronar E-9 Explorer-Class Armed Long-Range Scout Vessel
+	4 	3 	-1 	Explorer 	Loronar Corporation 	Yes 	4 	60 	4 	120,000 	6 	4 	2 	EtU:61
+Mandalorian Protectorate Starfighter
+	3 	6 	+3 	Fang fighter 	MandalMotors 	Yes 	1 	2 	0 	120,000 	9 	1 	2 	ND:58
+SoroSuub Luxury 3000 Space Yacht
+	4 	3 	0 	Luxury 3000 	SoroSuub Corporation 	Yes 	2 	100 	10 	120,000 	6 	4 	0 	E-CRB:262
+T-65B "X-Wing" Multi-Role Starfighter
+	3 	5 	+1 	T-65B X-wing 	Incom Corporation 	Astromech Droid Socket 	2 	10 	0 	120,000 	5 	1 	2 	A-BGR:43, A-CRB:267, F-CRB:261
+Tallanx-class Stealth Fighter
+	3 	5 	+2 	Tallanx 	Gimmellian Shipworks 	Yes 	1 	6 	0 	(R) 120,000 	9 	2 	1 	SoR:117
+The Deep Dark
+	4 	3 	0 	Skywatcher-class 	Sienar Fleet Systems 	Yes 	12 	50 	6 	(R) 120,000 	5 	3 	2 	BtR:70
+Wayfarer-Class Medium Freighter
+	5 	3 	-2 	Wayfarer 	Kuat Systems Engineering 	Yes 	10 	850 	6 	120,000 	5 	5 	1 	E-CRB:263
+YT-1210 Light Freighter
+	4 	4 	-1 	YT-1210 	Corellian Engineering Corporation 	Yes 	2 	100 	4 	120,000 	5 	3 	1 	SoF:112
+YT-2000 Light Freighter
+	4 	3 	0 	YT-2000 	Corellian Engineering Corporation 	Yes 	2 	170 	7 	120,000 	5 	5 	2 	FC:60
+YV-560 Light Freighter
+	4 	3 	0 	YV-560 	Corellian Engineering Corporation 	Yes 	2 	80 	5 	120,000 	7 	4 	1 	EtU:66
+The Diligent
+	5 	3 	-2 	PB-950 	Corellian Engineering Corporation 	Yes 	4 	180 	8 	125,000 	5 	3 	4 	SoF:127
+Curich-Class Shuttle
+	5 	3 	0 	Curich 	Sienar Fleet Systems 	Yes 	3 	300 	50 	(R) 130,000 	5 	2 	1 	DA:61
+G-1A Heavy Starfighter
+	3 	4 	-1 	G-1A 	Byblos Drive Yards 	Yes 	2 	25 	3 	130,000 	7 	4 	2 	ND:59
+YKL-37R Nova Courier
+	4 	3 	0 	YKL-37R Nova Courier 	Gallofree Yards, Inc. 	Yes 	2 	100 	6 	130,000 	6 	5 	4 	FC:56
+YT-2400 Light Freighter
+	4 	3 	0 	YT-2400 	Corellian Engineering Corporation 	Yes 	2 	140 	6 	130,000 	5 	5 	2 	E-CRB:265
+YV-666
+	4 	3 	-2 	YV-666 	Corellian Engineering Corporation 	Yes 	2 	200 	6 	132,000 	6 	6 	2 	ND:62
+Alpha-class XG-1 "Star Wing" Assault Gunboat
+	3 	4 	-2 	Alpha-class 	Cygnus Spaceworks 	Yes 	1 	8 	0 	(R) 135,000 	7 	2 	2 	FC:54
+Incom A-36 Pathfinder-Class Force Reconnaissance Vessel
+	4 	4 	0 	Pathfinder 	Incom Corporation 	Yes 	4 	40 	4 	135,000 	7 	2 	3 	EtU:60
+HT-2200 Medium Freighter
+	5 	2 	-2 	HT-2200 	Corellian Engineering Corporation 	Yes 	4 	800 	8 	140,000 	5 	5 	2 	FH:56, F-CRB:264
+Imperial Customs Frigate
+	4 	3 	-2 	Customs Frigate 	Rendili StarDrive 	Yes 	12 	140 	10 	(R) 140,000 	6 	2 	7 	FC:54
+Lambda-Class T-4A Long Range Shuttle
+	4 	3 	0 	Lambda 	Sienar Fleet Systems and Cygnus Spaceworks 	Yes 	6 	200 	20 	(R) 140,000 	6 	2 	3 	A-BGR:43*, A-CRB:273, E-CRB:256, F-CRB:260
+MC-18 Light Freighter
+	4 	3 	0 	MC-18 	Mon Calamari Shipyards 	Yes 	2 	150 	5 	140,000 	6 	2 	1 	DA:62
+Barrage Gunship
+	5 	3 	-1 	Barrage-class 	Alto Systems 	Yes 	7 	90 	5 	145,000 	8 	3 	6 	KtP:62
+A/SF-01 "B-Wing" Heavy Fast Attack Starfighter
+	3 	4 	-1 	A/SF-01 B-Wing 	Slayn & Korpil 	Yes 	1 	15 	0 	150,000 	6 	1 	4 	A-CRB:268
+Action IV Bulk Freighter
+	5 	2 	-2 	Action IV 	Corellian Engineering Corporation 	Yes 	26 	8500 	6 	150,000 	4 	4 	2 	DoH:61
+GAT-12H Skipray Blastboat
+	4 	4 	-1 	Skipray 	Sienar Fleet Systems 	Yes 	5 	20 	0 	150,000 	6 	2 	4 	E-CRB:259
+ISO-One
+	5 	2 	-3 	BFF-1 series 	Phylon Freight 	Yes 	15 	1000 	25 	150,000 	4 	5 	4 	BtR:96
+M12-L Kimogila Heavy Starfighter
+	4 	4 	-1 	M12-L Kimogila 	MandalMotors 	Yes 	1 	20 	0 	150,000 	5 	2 	3 	KtP:60
+PB-950 Patrol Boat
+	5 	3 	-2 	PB-950 	Corellian Engineering Corporation 	Yes 	4 	150 	8 	150,000 	5 	3 	4 	SoF:110
+RZ-1 "A-Wing" Light Interceptor
+	3 	6 	+3 	RZ-1 "A-Wing" 	Incom/Alliance Underground Engineering 	Yes 	1 	4 	0 	150,000 	6 	1 	2 	A-CRB:266
+Space Master Medium Transport
+	5 	2 	-4 	Space Master 	Kuat Drive Yards 	Yes 	9 	800 	0 	150,000 	4 	2 	2 	E-CRB:262
+VCX-100 Light Freighter
+	5 	3 	-3 	VCX-100 	Corellian Engineering Corporation 	Yes 	6 	200 	6 	155,000 	8 	5 	3 	KtP:63
+TL-18B Medium Transport
+	4 	3 	-1 	TL-18B 	Suwantek Systems 	Yes 	3 	400 	4 	157,000 	7 	5 	2 	DoH:61
+Agressor Assault Fighter
+	4 	5 	-1 	Aggressor 	Trilon Inc 	Yes 	2 	20 	8 	160,000 	6 	3 	3 	ND:58
+E-7 E-Wing Multi-Role Starfighter
+	3 	5 	+1 	E-Wing 	FreiTek Incorporated 	Astromech Droid Socket 	2 	8 	0 	160,000 	8 	1 	2 	SoT:52
+Nightflyer
+	4 	3 	+1 	YT-2400 	Corellian Engineering Corporation 	Yes 	1 	95 	6 	160,000 	5 	0 	2 	BtR:30
+S-Type Racing Sloop
+	3 	6 	+1 	S-Type Racing Sloop 	Nubia Star Drives, Inc. 	Yes 	2 	20 	2 	160,000 	7 	0 	0 	SoF:111
+StarViper M-2
+	3 	4 	+1 	StarViper M-2 	MandalMotors 	Yes 	1 	12 	0 	160,000 	7 	0 	2 	MPQ:81
+VT-49 Decimator
+	4 	3 	-3 	VT-49 Decimator 	Kuat Drive Yards 	Yes 	4 	60 	6 	160,000 	6 	1 	4 	FC:55
+Simiyiar Light Freighter
+	4 	3 	0 	Simiyiar 	Mon Calamari Shipyards 	Yes 	2 	90 	5 	165,000 	6 	4 	2 	F-CRB:264
+Suwantek TL-1200 Transport
+	5 	3 	-3 	TL-1200 	Suwantek Systems 	Yes 	6 	600 	8 	170,000 	6 	4 	2 	LoNH:115
+H-60 Tempest Heavy Bomber
+	4 	3 	-1 	H-60 Tempest 	Slayn & Korpil 	None 	2 	12 	0 	172,000 	5 	2 	4 	SoT:53
+GR-75 Medium Transport
+	5 	3 	-3 	GR-75 	Gallofree Yards, Inc. 	Yes 	7 	1000 	100 	180,000 	4 	2 	0 	E-CRB:261
+MandalMotors M22-T Krayt Gunship
+	4 	4 	-1 	M22-T Krayt 	MandalMotors 	Yes 	2 	20 	2 	185,000 	6 	2 	3 	LoNH:114
+The Venture
+	4 	3 	+2 	Courier-class 	Nubia Star Drives, Inc. 	Yes 	19 	50 	25 	185,000 	5 	3 	3 	JoY:91
+C-ROC Gozanti-class Light Cruiser
+	5 	3 	-3 	Gozanti-class/C-ROC Type 	Corellian Engineering Corporation 	Yes 	12 	1800 	20 	190,000 	8 	6 	6 	ND:63
+Action VI Bulk Transport
+	5 	2 	-3 	Action VI 	Corellian Engineering Corporation 	Yes 	20 	10000 	5 	200,000 	5 	4 	0 	E-CRB:260*
+D-Type Stealth Freighter
+	4 	2 	-3 	D-Type Stealth Freighter 	Nubia Star Drives, Inc. 	Yes 	2 	125 	3 	200,000 	7 	0 	0 	SoF:110
+Gozanti-Class Armed Transport
+	5 	2 	-3 	Gozanti 	Gallofree Yards, Inc. and Corellian Engineering Corporation 	Yes 	12 	1000 	12 	200,000 	6 	4 	7 	E-CRB:277, FC:58
+ILH-KK Citadel-Class Light Freighter
+	4 	3 	-1 	Citadel 	Koensayr Manufacturing 	Yes 	3 	95 	14 	200,000 	6 	4 	5 	E-CRB:260
+Xiytiar-Class Heavy Transport
+	5 	2 	-3 	Xiytiar 	TransGalMeg Industries 	Yes 	10 	2000 	12 	200,000 	5 	4 	0 	EtU:63
+YQ-400 Monitor-Class System Patrol Ship
+	4 	3 	0 	Monitor-class 	The Nerfworks 	None 	0 	0 	0 	200,000 	8 	0 	2 	FH:55
+Luxurious-class Yacht
+	4 	4 	+1 	Luxurious-class 	Ghtroc Industries 	Yes 	3 	80 	12 	210,000 	6 	4 	0 	FH:58
+Miy'til Starfighter
+	2 	4 	+1 	Miy'til 	Olanji/Charubah 	Astromech Droid Socket 	1 	5 	0 	210,000 	8 	1 	2 	KtP:61
+Starwind Pleasure Yacht
+	5 	3 	-2 	Starwind 	Kuat Drive Yards 	Yes 	5 	85 	10 	210,000 	6 	2 	2 	E-CRB:263
+BTS-A2 "H-Wing" Long-range Strike Starfighter
+	3 	3 	-2 	BTS-A2 H-wing 	Koensayr Manuracturing 	Yes 	3 	15 	1 	225,000 	6 	1 	3 	SoT:54
+Sentinel-Class Landing Craft
+	4 	3 	-1 	Sentinel 	Sienar Fleet Systems and Cygnus Spaceworks 	Yes 	4 	500 	54 	(R) 240,000 	7 	0 	4 	A-CRB:273
+Y164 Slave Transport
+	5 	3 	-2 	Y164 	Rendili StarDrive 	Yes 	15 	120 	1200 	245,000 	6 	3 	2 	LoNH:115
+Baudo-Class Star Yacht
+	4 	4 	+1 	Baudo 	Mendel Baudo Shipyards 	Yes 	2 	60 	8 	250,000 	9 	6 	1 	DA:60
+Baudo-class Star Yacht
+	4 	4 	+1 	Baudo-class 	Mendel Baudo Shipyards 	Yes 	2 	60 	8 	250,000 	9 	6 	1 	FC:57
+Darvro-class Light Freighter
+	4 	4 	0 	Darvro 	Gimmellian Shipworks 	Yes 	3 	120 	4 	(R) 250,000 	9 	4 	3 	SoR:118
+TIE/IT Interdictor Starfighter
+	3 	4 	-2 	TIE-series 	Sienar Fleet Systems 	None 	1 	10 	0 	(R) 253,000 	7 	0 	3 	SoT:59
+J-Type Star Skiff
+	4 	4 	-1 	J-Type Star Skiff 	Nubia Star Drives, Inc. 	Yes 	3 	90 	3 	260,000 	7 	0 	2 	SoF:111
+Mobquet Medium Transport
+	5 	1 	-4 	MMT 	Mobquet Swoops and Speeders 	Yes 	4 	5000 	90 	275,000 	5 	5 	2 	FC:57
+TIE/HU "Hunter" Multi-role Starfighter
+	3 	5 	+2 	TIE-series 	Sienar Fleet Systems 	Yes 	1 	6 	0 	(R) 275,000 	9 	0 	3 	SoT:58
+4R3 Light Assault Transport
+	4 	3 	-1 	4R3 	Telgorn Corporation 	Yes 	5 	80 	16 	300,000 	7 	4 	5 	DC:67
+Flatline and Brilliance
+	5 	3 	-1 	Interceptor IV 	Corellian Engineering Corporation 	Yes 	20 	10000 	5 	300,000 	7 	4 	3 	MPQ:81
+TIE/D "Defender" Multi-Role Starfighter
+	3 	4 	+2 	TIE Series 	Sienar Fleet Systems 	Yes 	1 	5 	0 	(R) 300,000 	8 	0 	3 	A-CRB:271
+CSS-1 Corellian Star Shuttle
+	5 	3 	-2 	CCS-8 	Corellian Engineering Corporation 	Yes 	8 	1000 	200 	325,000 	6 	4 	0 	SoF:110
+TIE/PH "Phantom" Multi-role Stealth Starfighter
+	3 	5 	+2 	TIE-series 	Sienar Fleet Systems 	Yes 	2 	8 	0 	(R) 365,000 	9 	0 	1 	SoT:60, SoR:127
+YV-929 Light Freighter
+	4 	3 	-1 	YV-929 	Corellian Engineering Corporation 	Yes 	4 	80 	6 	380,000 	6 	1 	6 	A-CRB:275*, DC:68
+YZ-775 Medium Transport
+	5 	2 	-3 	YZ-775 	Corellian Engineering Corporation 	Yes 	8 	850 	0 	500,000 	3 	2 	5 	DC:68
+Ubrikkian Industries Seltiss-2 Caravel
+	4 	3 	-1 	Seltiss-2 	Ubrikkian Industries 	None 	8 	200 	12 	550,000 	6 	4 	2 	LoNH:115
+Blockade Bandit
+	5 	2 	-2 	CR90 	Corellian Engineering Corporation 	Yes 	40 	750 	50 	700,000 	5 	2 	6 	BtR:93
+Kaminoan Observation Ship
+	6 	2 	-2 	Observation Platform 	Kamino Engineering 	Yes 	0 	2500 	20 	750,000 	7 	6 	0 	DoH:65
+Armos Modular Transport
+	6 	2 	-2 	Armos 	SoroSuub 	Yes 	150 	10000 	1000 	780,000 	8 	4 	0 	FH:59
+Temple-Class Heavy Freighter
+	6 	1 	-3 	Temple 	Kuat Drive Yards 	Yes 	50 	30000 	150 	950,000 	6 	6 	0 	A-CRB:443
+IR-3F-Class Light Frigate
+	5 	4 	-1 	IR-3F 	Republic Sienar Systems 	None 	20 	1800 	10 	1,000,000 	6 	2 	4 	F-CRB:267
+J-Type Diplomatic Barge
+	5 	4 	+1 	J-Type 	Nubia Star Drives 	Yes 	5 	180 	10 	1,000,000 	7 	0 	0 	DA:62
+CR90 Corvette
+	5 	3 	-1 	CR90 	Corellian Engineering Corporation 	Yes 	165 	2500 	600 	1,200,000 	5 	4 	6 	A-CRB:274, E-CRB:266, F-CRB:266
+Cybershop Ship
+	5 	3 	-2 	Modified CR90 	Corellian Engineering Corporation 	Yes 	135 	1000 	220 	1,300,000 	7 	6 	2 	SM:63
+Star Galleon Armed Transport
+	6 	1 	-2 	Star Galleon 	Kuat Drive Yards 	Yes 	150 	10000 	300 	(R) 1,500,000 	7 	2 	11 	A-CRB:442, E-CRB:265
+Quasar Fire-class Escort Carrier
+	6 	2 	-2 	Quasar Fire 	SoroSuub Corporation 	Yes 	250 	5000 	150 	1,750,000 	6 	4 	4 	SoT:61
+Ubrikkian Industries Modified Minstrel-Class Space Yacht
+	5 	3 	-1 	Minstrel-Class Space Yacht 	Ubrikkian Industries 	Yes 	37 	800 	75 	1,750,000 	7 	3 	12 	LoNH:116
+Jedi Training Cruiser Crucible
+	5 	3 	-1 	Unknown Class 	believed to be Rendili Vehicle Corporation 	Yes 	2 	300 	10 	(R) 2,000,000 	10 	6 	0 	DoH:64
+CR92A Assassin-Class Corvette
+	5 	3 	-1 	CR92a 	Corellian Engineering Corporation 	Yes 	150 	1000 	60 	(R) 2,500,000 	6 	2 	10 	SoF:113
+Rendili Stardrive Neutron Star-Class Bulk Cruiser
+	7 	1 	-3 	Neutron Star 	Rendili Star Drive 	Yes 	2200 	5000 	250 	2,800,000 	4 	6 	51 	DC:69
+Consular-Class Light Cruiser
+	5 	3 	-2 	Consular 	Corellian Engineering Corporation 	Yes 	9 	4000 	24 	3,000,000 	5 	6 	0 	DoH:62
+Marauder-Class Assault Corvette
+	5 	3 	0 	Marauder 	Republic Sienar Systems 	Yes 	177 	175 	80 	(R) 3,000,000 	5 	1 	11 	E-CRB:267
+DP20 Gunship
+	5 	4 	-1 	DP20 	Corellian Engineering Corporation 	Yes 	91 	300 	0 	3,200,000 	6 	1 	18 	E-CRB:266
+Consular-Class Light Assault Cruiser
+	5 	3 	-2 	Consular 	Corellian Engineering Corporation 	Yes 	9 	3200 	16 	3,400,000 	5 	4 	5 	A-CRB:276
+Renegade's Blood
+	5 	4 	0 	Consular 	Corellian Engineering Corporation 	Yes 	9 	3200 	16 	3,400,000 	5 	3 	7 	MPQ:82
+Ton-Falk-class Escort Carrier
+	7 	2 	-3 	Ton-Falk 	Kuat Drive Yards 	Yes 	4000 	9000 	800 	(R) 3,500,000 	7 	3 	15 	SoT:61
+Vigil-Class Corvette
+	5 	3 	-1 	Vigil 	Kuat Drive Yards 	Yes 	200 	1800 	200 	(R) 3,500,000 	5 	0 	3 	A-CRB:274
+Xanter-Class Deep-Space Exploration Frigate
+	6 	1 	-2 	Xanter 	Rendili Star Drive 	Yes 	150 	2000 	50 	3,750,000 	7 	2 	11 	EtU:67
+Imperial System Patrol Craft IPV-1
+	5 	3 	-1 	IPV-1 	Sienar Fleet Systems 	None 	12 	20 	10 	(R) 4,000,000 	5 	2 	5 	BtR:93
+ADZ-Class Destroyer
+	5 	2 	-2 	Adz 	Kuat Drive Yards 	Yes 	30 	250 	8 	(R) 4,450,000 	7 	1 	7 	F-CRB:266
+Lancer-Class Frigate
+	5 	2 	-1 	Lancer 	Kuat Drive Yards 	Yes 	800 	200 	40 	(R) 4,760,000 	7 	0 	20 	A-CRB:278
+Corellian Engineering Corporation Deep Space Recovery Vessel L-2783
+	5 	2 	-4 	L-2783 	Corellian Engineering Corporation 	Yes 	100 	5000 	100 	6,500,000 	6 	7 	4 	SM:64
+Dreadnought-Class Heavy Cruiser
+	7 	2 	-2 	Dreadnought 	Rendili Star Drive 	Yes 	16000 	7500 	3000 	7,200,000 	6 	4 	40 	A-CRB:279
+Ubrikkian Industries Kossak-Class Frigate
+	6 	3 	-2 	Kossak-Class 	Ubrikkian Industries 	Yes 	975 	3500 	90 	8,300,000 	7 	3 	30 	LoNH:117
+EF76 Nebulon-B Escort Frigate
+	6 	3 	-1 	Nebulon-B 	Kuat Drive Yards 	Yes 	920 	4000 	75 	(R) 8,500,000 	7 	2 	27 	A-CRB:278*, E-CRB:268
+Shadow Raptor
+	6 	3 	+1 	Nebulon-B 	Kuat Drive Yards 	Yes 	683 	3500 	225 	(R) 8,500,000 	7 	0 	39 	DitW:13
+MC30c Frigate
+	6 	4 	0 	MC30c 	Mon Calamari Shipyards 	Yes 	820 	3500 	95 	(R) 9,500,000 	6 	3 	40 	SoR:118
+Surveyor-class Reconnaissance Frigate
+	6 	3 	-1 	Surveyor-class 	Kuat Drive Yards 	Yes 	900 	3700 	80 	(R) 9,600,000 	8 	2 	22 	LbE:53
+Starbolt Assault Carrier
+	6 	3 	-1 	Starbolt 	Corellian Engineering Corporation 	Yes 	800 	4000 	250 	(R) 10,000,000 	8 	2 	10 	DC:70
+Vindicator-Class Heavy Cruiser
+	7 	3 	-1 	Vindicator 	Sienar Fleet Systems 	Yes 	2551 	7500 	400 	(R) 10,400,000 	8 	0 	58 	A-CRB:280
+Munificent-class Command, Control, and Communications Frigate
+	7 	2 	0 	Munificent-class 	Hoersch-Kessel Drive, Inc 	Yes 	1100 	10000 	850 	12,300,000 	9 	1 	108 	LbE:52
+Interdictor-Class Heavy Cruiser
+	7 	2 	-2 	Interdictor-class 	Sienar Fleet Systems 	Yes 	2807 	6500 	80 	(R) 15,400,000 	8 	0 	20 	A-CRB:280, FC:60
+MC40a Light Cruiser
+	6 	2 	-1 	MC40a 	Mon Calamari Shipyards 	Yes 	3770 	5000 	650 	(R) 15,500,000 	6 	4 	40 	SoR:119
+Indulgent-Class Luxury Starliner
+	7 	1 	-1 	Indulgent-class 	Leonore Luxury Liners Incorporated 	Yes 	850 	3200 	1500 	25,500,000 	7 	1 	4 	FH:59
+Golan I Space Defense Platform
+	8 	0 	0 	Golan I 	Golan Arms 	None 	5000 	20000 	10000 	(R) 26,000,000 	9 	4 	39 	FC:61
+Victory-Class Star Destroyer
+	8 	1 	-3 	Victory II 	Kuat Drive Yards 	Yes 	6107 	6500 	1600 	(R) 50,000,000 	6 	4 	60 	A-CRB:284, F-CRB:267
+MC80 Liberty Type Star Cruiser
+	8 	2 	-2 	Liberty 	Mon Calamari Shipyards 	Yes 	5400 	70000 	1200 	104,000,000 	7 	4 	74 	A-CRB:284
+MC80A Home One type Heavy Star Cruiser
+	9 	2 	-2 	Home One type 	Mon Calamari Shipyards 	Yes 	5480 	85000 	1200 	112,000,000 	8 	4 	158 	LbE:54
+Imperial I-Class Star Destroyer
+	8 	2 	-3 	Imperial I 	Kuat Drive Yards 	Yes 	37085 	15000 	9700 	(R) 150,000,000 	7 	2 	130 	A-CRB:281
+Independence
+	8 	2 	-2 	Home One 	Mon Calamari Shipyards 	Yes 	5400 	20000 	1200 	150,000,000 	7 	2 	78 	SoR:60
+Maelstrom-class Battle Cruiser
+	8 	1 	-3 	Maelstrom-classs 	Kuat Drive Yards 	Yes 	45000 	12500 	15000 	(R) 158,000,000 	8 	2 	120 	LbE:57
+The Eternal Wrath
+	8 	2 	-3 	Interdictor 	Sienar Fleet Systems 	Yes 	37085 	12500 	5000 	(R) 175,000,000 	8 	0 	32 	OaA:75
+End of Days
+	7 	3 	-1 	Keldabe 	Zann Consortium 	Yes 	6000 	8000 	1000 	(R) 200,000,000 	8 	4 	47 	MPQ:80
+Keldabe-Class Battleship
+	7 	3 	-1 	Keldabe 	Mandal Motors / Zann Consortium 	Yes 	6000 	8000 	1000 	(R) 200,000,000 	8 	4 	47 	DC:69
+Secutor-class Battlecarrier
+	8 	2 	-4 	Secutor 	Kuat Drive Yards 	Yes 	40000 	28000 	14000 	(R) 200,000,000 	7 	2 	73 	SoT:62
+Praetor II-Class Star Battlecruiser
+	9 	2 	-3 	Praetor II 	Kuat Drive Yards 	Yes 	109000 	78000 	14000 	(R) 700,000,000 	9 	1 	150 	A-CRB:283
+Assertor-class Command Dreadnought
+	9 	2 	-4 	Assertor-class 	Kuat Drive Yards 	Yes 	125000 	145000 	20000 	(R) 1,100,000,000 	10 	3 	320 	LbE:56
