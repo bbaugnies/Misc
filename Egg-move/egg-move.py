@@ -3,14 +3,13 @@ import re
 import requests
 import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument("pokemon")
-parser.add_argument("--extra-moves", nargs="*")
-parser.add_argument("--other", action="store_true")
+parser = argparse.ArgumentParser(description="Look up movesets on Smogon and finds which moves are egg-moves only")
+parser.add_argument("pokemon", help="Pokemon to lookup, no cap")
+parser.add_argument("--extra-moves", nargs="*", help="Additional moves besides movesets")
+parser.add_argument("--other", action="store_true", help="More permissive search than moveset boxes, doesn't work")
+parser.add_argument("--all", action="store_true", help="Finds all Egg-exclusive moves")
 
 args = parser.parse_args()
-print(args)
-print(args.pokemon)
 
 smogon_url = "https://www.smogon.com/dex/sm/pokemon/"+args.pokemon
 pokedb_url = "https://pokemondb.net/pokedex/"+args.pokemon
@@ -38,14 +37,11 @@ if args.other:
 			moveList.append(i)	
 	
 moveList = list(set(moveList + (args.extra_moves if args.extra_moves != None else [])))
-print(moveList)
 
-f = open("tmp", "w")
 pokedb_page = requests.get(pokedb_url).text
 pokedb_page = pokedb_page.split("Moves learnt by level")[1]
 pokedb_page = pokedb_page.split("Egg moves")
 normal = pokedb_page[0]
-f.write(pokedb_page[1])
 pokedb_page = pokedb_page[1].split("Move Tutor moves")
 egg = pokedb_page[0]
 pokedb_page = pokedb_page[1].split("Transfer-only moves")
@@ -53,6 +49,9 @@ normal += "\n" + pokedb_page[0]
 if len(pokedb_page) > 1:
 	transfer = pokedb_page[1]
 
+if args.all:
+	moveList = re.findall("View details for (.*?)\">", egg)
+print(moveList)
 
 for i in moveList:
 	if re.search(i, normal) != None:
