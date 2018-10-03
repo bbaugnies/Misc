@@ -148,6 +148,7 @@ function runBot(msg) {
             console.log(err);            
         }
         api.sendMessage(msg, ben);
+	api.sendMessage(msg, warhammer);
         if (!debug){
             api.sendMessage(msg, warhammer);
             api.sendMessage(msg, sw);
@@ -389,4 +390,4 @@ exec(command,
     });
     
 updateUnits()
-runBot("Hello, humans!");
+runBot("Superbowl 03/02/2019! Réservez la date, bougez les annifs!");
