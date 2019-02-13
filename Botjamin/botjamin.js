@@ -9,7 +9,7 @@ var exec = require('child_process').exec, child;
 
 var regex = /([\s\S]*?)\/[rR](oll)? ?(\d+)[dD](\d+) ?([as]|[ou]\d+)?/g
 
-var debug = true
+var debug = true 
 var override = false
 
 var pwd = fs.readFileSync("./pwd.txt", "utf8")
@@ -148,7 +148,6 @@ function runBot(msg) {
             console.log(err);            
         }
         api.sendMessage(msg, ben);
-	api.sendMessage(msg, warhammer);
         if (!debug){
             api.sendMessage(msg, warhammer);
             api.sendMessage(msg, sw);
@@ -218,7 +217,10 @@ function runBot(msg) {
 	                }
                     else if (message.body.match(/petite?/i)) {
                         api.sendMessage('CTB', message.threadID);
-                    }                    
+                    }
+		    else if (message.body.match(/[0-3]?\d[\/ ](jan|f.v|mar|avr|mai|jui|ao.t|sep|oct|nob|d.c|\d[1-2])/i)) {
+	   	    	api.sendMessage(message.body, ben)
+		    }                    
                     else if (message.body.match(/\/stats/i)) {
                         m = message.body.match(/\/stats ([a-z]*)/i)
                         r = ""
